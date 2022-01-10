@@ -25,6 +25,7 @@ const App = () => (
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+
             <Route path='/*' element={<Nomatch />} />
           </Routes>
         </>
