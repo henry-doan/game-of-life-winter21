@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const handleRegister = (user) =>{
-    axios.post('/api/auth', user)
+    axios.post("/api/auth", user)
       .then( res => {
         setUser(res.data.data)
         navigate('/')
@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const handleLogin = (user) => {
-    axios.post('/api/auth/sign_in', user)
+    axios.post("/api/auth/sign_in", user)
     .then( res => {
       setUser(res.data.data)
       navigate('/')
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
       handleLogin: handleLogin,
       handleLogout: handleLogout,
       authenticated: user !== null, 
-      setUser: (user) => setUser({ user })
+      setUser: (user) => setUser(user)
     }}>
       { children }
     </AuthContext.Provider>
