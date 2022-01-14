@@ -37,24 +37,12 @@ const Register = ({ handleRegister }) => {
           <Row>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>First Name</Form.Label>
+                <Form.Label>Name</Form.Label>
                 <Form.Control 
                   type="text"
-                  name="fname"
-                  value={user.fname}
-                  onChange={(e) => setUser({ ...user, fname: e.target.value })}
-                  required
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control 
-                  type="text"
-                  name="lname"
-                  value={user.lname}
-                  onChange={(e) => setUser({ ...user, lname: e.target.value })}
+                  name="name"
+                  value={user.name}
+                  onChange={(e) => setUser({ ...user, name: e.target.value })}
                   required
                 />
               </Form.Group>

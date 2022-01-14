@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Form, Row, Col, Image, Container, Button } from 'react-bootstrap';
 
 
-const Profile = ({ id, name, email, created_at, image, user, updateUser }) => {
+const Profile = ({ user, updateUser }) => {
   const [editing, setEditing] = useState(false)
   const [formVals, setFormValue] = useState({ name: '', email: '', image: null })
 
@@ -32,7 +32,7 @@ const profileView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateUser(user.id, formVals)
+    updateUser(user, formVals)
     setEditing(false)
     setFormValue({ ...formVals, image: null })
   }
@@ -80,26 +80,26 @@ const profileView = () => {
     }
   
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={image} />
-      <Card.Body>
-        <Card.Title>User # {id} {name}</Card.Title>
-        <Card.Text>
-          Email: {email}
-          <br />
-          Date Joined: {' '}
-          <Moment format="MM/DD/YY">
-            {created_at}
-          </Moment>
-        </Card.Text>
-      </Card.Body>
-    </Card>
+    <>
+    <Container>
+        <h1>Profile</h1>
+        <hr />
+        <Row>
+          { editing ? editView() : profileView() }
+          <Col>
+            <Button onClick={() => setEditing(!editing)}>
+              { editing ? 'cancel' : 'edit' }
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+      </>
   )
 }
 
 const ConnectedProfile = (props) => (
   <AuthConsumer>
-    { value => <Profile {...props} {...value.user} />}
+    { value => <Profile {...props} {...value} />}
   </AuthConsumer>
 )
 
