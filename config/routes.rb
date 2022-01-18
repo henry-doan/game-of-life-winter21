@@ -9,5 +9,13 @@ Rails.application.routes.draw do
     resources :rewards
   end
 
+  namespace :api do
+    resources :tasks
+  end
+
+  namespace :api do
+    resources :habits
+  end
+
 
 end

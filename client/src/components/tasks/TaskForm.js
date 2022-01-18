@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-const TaskForm = ({id, task, due, comment, image, reward_id, complete}) => {
-  const [task, setTask ] = useState({ task: '', due: '', comment: '', image: '', reward_id: 0, complete: false})
+const TaskForm = ({id, title, comment, add_sub, diff_levels, tags, frequency, updateTask, addTask}) => {
+  const [task, setTask ] = useState({ title: '', comment: '', add_sub: false, diff_levels: '', tags: '', frequency: ''})
 
 
 useEffect( () => {
   if (id) {
-    setTask({ task, due, comment, image, reward_id, complete })
+    setTask({ title, comment, add_sub, diff_levels, tags, frequency })
   }
 },  [])
 
@@ -17,8 +17,9 @@ const handleSubmit = (e) => {
   } else {
     addTask(task)
   }
-  setTask({ task: '', due: '', comment: '', image: '', reward_id: 0, complete: false})
+  setTask({ title: '', comment: '', add_sub: false, diff_levels: '', tags: '', frequency: ''})
 }
+
 
 return (
   <>
@@ -26,45 +27,68 @@ return (
       <label>Task:</label>
       <input 
         type="text"
-        name="Task"
-        value={task.task}
-        onChange={(e) => setTask({ ...task, task: e.target.value})}
+        name="title"
+        value={task.title}
+        onChange={(e) => setTask({ ...task, title: e.target.value})}
         required
       />
-      <label>Due:</label>
+      <label>Note:</label>
       <input 
-        type="date"
-        name="Due Date"
-        value={task.due}
-        onChange={(e) => setTask({ ...task, due: e.target.value})}
-        required
-      />
-      <label>Add any notes about your task:</label>
-      <textarea 
         type="text"
         name="comment"
         value={task.comment}
         onChange={(e) => setTask({ ...task, comment: e.target.value})}
-      ></textarea>
-      <label>Image:</label>
-      <textarea 
-        type="text"
-        name="image"
-        value={task.image}
-        onChange={(e) => setTask({ ...task, image: e.target.value})}
+        required
       />
-      {/* I have no idea how to do the reward one */}
-      <label>Choose Your Reward:</label>
-      <select id="rewards" name="rewars"> 
-        <option value={task.reward_id}></option>
+      <fieldset>
+      <input
+        type="radio"
+        id="positive"
+        name="add_sub"
+        value={task.add_sub}
+        onChange={(e) => setTask({ ...task, add_sub: e.target.value})}
+        selected
+     />
+    <label for="positive">+</label>
+     <input
+        type="radio"
+        id="negative"
+        name="add_sub"
+        value={task.add_sub}
+        onChange={(e) => setTask({ ...task, add_sub: e.target.value})}
+     />
+    <label for="negative">-</label>
+    </fieldset>
+
+      <label>Difficulty</label>
+      <select id="diff_levels" name="diff_levels" onChange={(e) => setTask({ ...task, dif_level: e.target.value})}> 
+        <option value='Easy' selected>Easy</option>
+        <option value='Medium'>Medium</option>
+        <option value='Difficult'>Difficult</option>
       </select>
-      {/* I'd like to do the complete one with a style change */}
+
+      <label>Tags</label>
+      <input
+        type="text"
+        id="tags"
+        name="tags"
+        value={task.tags}
+        onChange={(e) => setTask({ ...task, tags: e.target.value})}
+        />
+
+      <label>Reset Counter</label>
+      <select id="frequency" name="frequency"> 
+        <option value='Daily' selected>Daily</option>
+        <option value='Weekly'>Weekly</option>
+        <option value='Monthly'>Monthly</option>
+        <option value='Annually'>Annually</option>
+      </select> 
       <button type="submit">Submit</button>
 
     </form>
 
   </>
-)
+  )
 }
 
 export default TaskForm;

@@ -3,13 +3,13 @@ import { AuthConsumer } from '../../providers/AuthProvider';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Register = ({ handleRegister }) => {
-  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', name: '', image: '' })
+  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', fname: '', lname: '', age: 0, image: '' })
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (user.password === user.passwordConfirmation) {
       handleRegister(user)
-      setUser({ email: '', password: '', passwordConfirmation: '', name: '', image: '' })
+      setUser({ email: '', password: '', passwordConfirmation: '', fname: '', lname: '', age: 0, image: '' })
     } else {
       alert('Password do not match')
     }
@@ -37,23 +37,32 @@ const Register = ({ handleRegister }) => {
           <Row>
             <Col>
               <Form.Group className="mb-3">
-                <Form.Label>Name</Form.Label>
+                <Form.Label>First Name</Form.Label>
                 <Form.Control 
                   type="text"
-                  name="name"
-                  value={user.name}
-                  onChange={(e) => setUser({ ...user, name: e.target.value })}
+                  name="fname"
+                  value={user.fname}
+                  onChange={(e) => setUser({ ...user, fname: e.target.value })}
                   required
                 />
               </Form.Group>
             </Col>
             <Col>
-              
+              <Form.Group className="mb-3">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control 
+                  type="text"
+                  name="lname"
+                  value={user.lname}
+                  onChange={(e) => setUser({ ...user, lname: e.target.value })}
+                  required
+                />
+              </Form.Group>
             </Col>
           </Row>
           <Row>
             <Col>
-              {/* <Form.Group className="mb-3">
+              <Form.Group className="mb-3">
                 <Form.Label>Age</Form.Label>
                 <Form.Control 
                   type="number"
@@ -62,7 +71,7 @@ const Register = ({ handleRegister }) => {
                   onChange={(e) => setUser({ ...user, age: e.target.value })}
                   required
                 />
-              </Form.Group> */}
+              </Form.Group>
             </Col>
             <Col>
               <Form.Group className="mb-3">

@@ -9,7 +9,9 @@ import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
 import RewardShow from './components/rewards/RewardShow';
-import Rewards from './components/rewards/Rewards'
+import Rewards from './components/rewards/Rewards';
+import Tasks from './components/tasks/Tasks';
+import TaskShow from './components/tasks/TaskShow';
 
 const App = () => (
   <>
@@ -23,6 +25,8 @@ const App = () => (
               <Route path='/profile' element={<Profile />} />
               <Route path='/rewards' element={<Rewards />} />
               <Route path='/rewards/:rewardId' element={<RewardShow />} />
+              <Route path='/tasks' element={<Tasks />} />
+              <Route path='/tasks/:taskId' element={<TaskShow />} />
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />

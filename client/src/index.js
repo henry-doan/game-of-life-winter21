@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { initMiddleware } from 'devise-axios';
 import AuthProvider from './providers/AuthProvider';
 import RewardProvider from './providers/RewardProvider';
+import TaskProvider from './providers/TaskProvider';
 
 initMiddleware();
 
@@ -16,7 +17,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <RewardProvider>
+          <TaskProvider>
           <App />
+          </TaskProvider>
         </RewardProvider>
       </AuthProvider>
     </BrowserRouter>
