@@ -8,9 +8,12 @@ import Register from './components/auth/Register';
 import FetchUser from './components/auth/FetchUser';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
-import Feed from './components/shared/Feed';
 import RewardShow from './components/rewards/RewardShow';
-import Rewards from './components/rewards/Rewards'
+import Rewards from './components/rewards/Rewards';
+import Tasks from './components/tasks/Tasks';
+import TaskShow from './components/tasks/TaskShow';
+import Habits from './components/habits/Habits';
+import HabitShow from './components/habits/HabitShow';
 
 const App = () => (
   <>
@@ -22,9 +25,12 @@ const App = () => (
             <Route path='/' element={<Home />} />
             <Route path='/' element={<ProtectedRoute />}>
               <Route path='/profile' element={<Profile />} />
-              <Route path='/feed' element={<Feed />} />
               <Route path='/rewards' element={<Rewards />} />
-              {/* <Route path='/rewards/:rewardId' element={<RewardShow />} /> */}
+              <Route path='/rewards/:rewardId' element={<RewardShow />} />
+              <Route path='/tasks' element={<Tasks />} />
+              <Route path='/tasks/:tasksId' element={<TaskShow />} />
+              <Route path='/habits' element={<Habits />} />
+              <Route path='/habits/:habitsId' element={<HabitShow />} />
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />

@@ -7,6 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { initMiddleware } from 'devise-axios';
 import AuthProvider from './providers/AuthProvider';
+import RewardProvider from './providers/RewardProvider';
+import TaskProvider from './providers/TaskProvider';
+import HabitProvider from './providers/HabitProvider';
 
 initMiddleware();
 
@@ -14,7 +17,13 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <RewardProvider>
+          <TaskProvider>
+            <HabitProvider>
+              <App />
+            </HabitProvider>
+          </TaskProvider>
+        </RewardProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,

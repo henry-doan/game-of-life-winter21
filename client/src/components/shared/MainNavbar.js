@@ -14,8 +14,18 @@ const MainNavbar = ({ user, handleLogout }) => {
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/Feed">
-              Feed
+            <Link to="/Habit">
+              Habits
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to="/Task">
+              Tasks
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
+            <Link to="/Reward">
+              Rewards
             </Link>
           </Nav.Link>
           <Nav.Link onClick={() => handleLogout()}>

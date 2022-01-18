@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_025212) do
+ActiveRecord::Schema.define(version: 2022_01_18_021123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "habits", force: :cascade do |t|
+    t.string "title"
+    t.string "notes"
+    t.boolean "add_sub"
+    t.string "dif_level"
+    t.string "tags"
+    t.string "frequency"
+    t.string "desc"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_habits_on_user_id"
+  end
 
   create_table "rewards", force: :cascade do |t|
     t.string "award"
@@ -71,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_01_13_025212) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "habits", "users"
   add_foreign_key "rewards", "users"
   add_foreign_key "tasks", "users"
 end
