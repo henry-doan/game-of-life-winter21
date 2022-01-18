@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_01_18_021123) do
+=======
+ActiveRecord::Schema.define(version: 2022_01_18_013716) do
+>>>>>>> 838e696 (migration to change task model schema)
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +45,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_021123) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "task"
+    t.string "title"
     t.datetime "due"
     t.text "comment"
     t.string "image"
@@ -50,6 +54,10 @@ ActiveRecord::Schema.define(version: 2022_01_18_021123) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "add_sub"
+    t.string "diff_levels"
+    t.string "tags"
+    t.string "frequency"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
