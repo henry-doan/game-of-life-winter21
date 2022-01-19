@@ -7,7 +7,9 @@ const HabitList = ({ habits }) => {
       <ListGroup>
         { habits.map( h => 
           <Link to={`/habits/${h.id}`}>
-            <ListGroup.Item>{h.title}</ListGroup.Item>
+            <ListGroup.Item>
+              {h.title}
+            </ListGroup.Item>
           </Link>
         )}
       </ListGroup>
