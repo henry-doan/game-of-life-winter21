@@ -7,7 +7,7 @@ import HabitForm from './HabitForm';
 
 const HabitShow = ({ updateHabit, deleteHabit }) => {
   const params = useParams();
-  const [habit, setHabit] = useState({ title: '', notes: '', add_sub: '', dif_levels: '', tags: '', frequency: '' })
+  const [habit, setHabit] = useState({ title: '', notes: '', add_option: false, sub_option: false, dif_level: '', tags: '', frequency: '' })
   const [editing, setEdit] = useState(false)
 
   useEffect( () => {
@@ -16,14 +16,14 @@ const HabitShow = ({ updateHabit, deleteHabit }) => {
       .catch( err => console.log(err))
   }, [])
 
-  const { title, notes, add_sub, dif_levels, tags, frequency, id } = habit
+  const { title, notes, add_option, sub_option, dif_level, tags, frequency, id } = habit
   return (
     <>
       { editing ? 
         <>
           <HabitForm 
             {...habit}
-            updateTask={updateHabit}
+            updateHabit={updateHabit}
           />
           <Button variant="warning" onClick={() => setEdit(false)}>Cancel</Button>
           <br />
@@ -32,8 +32,9 @@ const HabitShow = ({ updateHabit, deleteHabit }) => {
         <>
           <h1>Id: {params.taskId} {title}</h1>
           <h3>notes: {notes}</h3>
-          <h3>add_sub: {add_sub}</h3>
-          <h3>dif_levels: {dif_levels}</h3>
+          <h3>add_option: {add_option ? 'true' : 'false'}</h3>
+          <h3>sub_option: {sub_option ? 'true' : 'false'}</h3>
+          <h3>dif_level: {dif_level}</h3>
           <h3>tags: {tags}</h3>
           <h3>frequency: {frequency}</h3>
           <Button 

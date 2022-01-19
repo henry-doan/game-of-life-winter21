@@ -28,9 +28,9 @@ const App = () => (
               <Route path='/rewards' element={<Rewards />} />
               <Route path='/rewards/:rewardId' element={<RewardShow />} />
               <Route path='/tasks' element={<Tasks />} />
-              <Route path='/tasks/:tasksId' element={<TaskShow />} />
+              <Route path='/tasks/:taskId' element={<TaskShow />} />
               <Route path='/habits' element={<Habits />} />
-              <Route path='/habits/:habitsId' element={<HabitShow />} />
+              <Route path='/habits/:habitId' element={<HabitShow />} />
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />

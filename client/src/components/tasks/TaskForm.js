@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const TaskForm = ({id, title, comment, add_sub, diff_levels, tags, frequency, updateTask, addTask}) => {
-  const [task, setTask ] = useState({ title: '', comment: '', add_sub: false, diff_levels: '', tags: '', frequency: ''})
+  const [task, setTask ] = useState({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily'})
 
 
 useEffect( () => {
@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
   } else {
     addTask(task)
   }
-  setTask({ title: '', comment: '', add_sub: false, diff_levels: '', tags: '', frequency: ''})
+  setTask({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily'})
 }
 
 
@@ -40,7 +40,8 @@ return (
         onChange={(e) => setTask({ ...task, comment: e.target.value})}
         required
       />
-      <fieldset>
+
+      {/* <fieldset>
       <input
         type="radio"
         id="positive"
@@ -57,10 +58,11 @@ return (
         onChange={(e) => setTask({ ...task, add_sub: e.target.value})}
      />
     <label for="negative">-</label>
-    </fieldset>
+    </fieldset> */}
 
-      <select id="diff_levels" name="diff_levels"> 
-        <option value='Easy'>Easy</option>
+      <label>Difficulty</label>
+      <select id="diff_levels" name="diff_levels" onChange={(e) => setTask({ ...task, dif_level: e.target.value})}> 
+        <option value='Easy' selected>Easy</option>
         <option value='Medium'>Medium</option>
         <option value='Difficult'>Difficult</option>
       </select>
@@ -74,8 +76,9 @@ return (
         onChange={(e) => setTask({ ...task, tags: e.target.value})}
         />
 
+      <label>Reset Counter</label>
       <select id="frequency" name="frequency"> 
-        <option value='Daily'>Daily</option>
+        <option value='Daily' selected>Daily</option>
         <option value='Weekly'>Weekly</option>
         <option value='Monthly'>Monthly</option>
         <option value='Annually'>Annually</option>

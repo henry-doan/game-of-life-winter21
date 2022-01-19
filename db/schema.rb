@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_01_18_021123) do
-=======
-ActiveRecord::Schema.define(version: 2022_01_18_013716) do
->>>>>>> 838e696 (migration to change task model schema)
+ActiveRecord::Schema.define(version: 2022_01_19_021025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_013716) do
   create_table "habits", force: :cascade do |t|
     t.string "title"
     t.string "notes"
-    t.boolean "add_sub"
+    t.boolean "add_option"
     t.string "dif_level"
     t.string "tags"
     t.string "frequency"
@@ -30,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_01_18_013716) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "sub_option"
     t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
@@ -54,10 +51,11 @@ ActiveRecord::Schema.define(version: 2022_01_18_013716) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "add_sub"
+    t.boolean "add_option"
     t.string "diff_levels"
     t.string "tags"
     t.string "frequency"
+    t.boolean "sub_option"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

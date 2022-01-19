@@ -7,7 +7,7 @@ import { Form, Row, Col, Image, Container, Button } from 'react-bootstrap';
 
 const Profile = ({ user, updateUser }) => {
   const [editing, setEditing] = useState(false)
-  const [formVals, setFormValue] = useState({ name: '', email: '', image: null })
+  const [formVals, setFormValue] = useState({ name: '', email: '', image: '' })
 
   useEffect( () => {
     const { name, email, image } = user
@@ -34,7 +34,6 @@ const profileView = () => {
     e.preventDefault()
     updateUser(user, formVals)
     setEditing(false)
-    setFormValue({ ...formVals, image: null })
   }
 
   const editView = () => {

@@ -7,7 +7,7 @@ const RewardList = ({ rewards }) => {
       <ListGroup>
         { rewards.map( p => 
           <Link to={`/rewards/${p.id}`}>
-            <ListGroup.Item>{p.name}</ListGroup.Item>
+            <ListGroup.Item>{p.award}</ListGroup.Item>
           </Link>
         )}
       </ListGroup>

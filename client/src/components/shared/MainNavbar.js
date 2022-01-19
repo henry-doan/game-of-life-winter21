@@ -14,17 +14,17 @@ const MainNavbar = ({ user, handleLogout }) => {
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/Habit">
+            <Link to="/habits">
               Habits
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/Task">
+            <Link to="/tasks">
               Tasks
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/Reward">
+            <Link to="/rewards">
               Rewards
             </Link>
           </Nav.Link>

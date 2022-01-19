@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-const HabitForm = ({id, title, notes, add_sub, dif_level, tags, frequency, updateHabit, addHabit}) => {
-  const [habit, setHabit ] = useState({ title: '', notes: '', add_sub: false, dif_level: '', tags: '', frequency: ''})
+const HabitForm = ({ id, title, notes, add_option, sub_option, dif_level, tags, frequency, updateHabit, addHabit}) => {
+  const [habit, setHabit ] = useState({ title: '', notes: '', add_option: false, sub_option: false, dif_level: 'Easy', tags: '', frequency: 'Daily'})
 
 
 useEffect( () => {
   if (id) {
-    setHabit({ title, notes, add_sub, dif_level, tags, frequency})
+    setHabit({ title, notes, add_option, sub_option, dif_level, tags, frequency})
   }
 },  [])
 
@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
   } else {
     addHabit(habit)
   }
-  setHabit({ title: '', notes: '', add_sub: false, dif_level: '', tags: '', frequency: ''})
+  setHabit({ title: '', notes: '', add_option: false, sub_option: false, dif_level: 'Easy', tags: '', frequency: 'Daily'})
 }
 
 
@@ -40,7 +40,7 @@ return (
         onChange={(e) => setHabit({ ...habit, notes: e.target.value})}
         required
       />
-      <fieldset>
+      {/* <fieldset>
       <input
         type="radio"
         id="positive"
@@ -58,7 +58,14 @@ return (
         onChange={(e) => setHabit({ ...habit, add_sub: e.target.value})}
      />
     <label for="negative">-</label>
-    </fieldset>
+    </fieldset> */}
+
+      <div onClick={() => setHabit({ ...habit, add_option: !habit.add_option})}>
+        +
+      </div>
+      <div onClick={() => setHabit({ ...habit, sub_option: !habit.sub_option})}>
+        -
+      </div>  
 
       <select id="dif_level" name="dif_level" 
       onChange={(e) => setHabit({ ...habit, dif_level: e.target.value})}> 

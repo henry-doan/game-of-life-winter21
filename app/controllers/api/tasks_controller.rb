@@ -33,7 +33,7 @@ class Api::TasksController < ApplicationController
   
     private
     def task_params
-      params.require(:task).permit(:title, :comment, :add_sub, :diff_levels, :tags, :frequency)
+      params.require(:task).permit(:title, :comment, :diff_levels, :tags, :frequency)
     end
     
     def set_task

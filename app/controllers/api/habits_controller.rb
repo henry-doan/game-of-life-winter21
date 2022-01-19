@@ -2,7 +2,7 @@ class Api::HabitsController < ApplicationController
   before_action :set_habit, only: [:show, :update, :destroy]
 
   def index
-    render json: current_user.habit
+    render json: current_user.habits
   end
 
   def show
@@ -33,7 +33,7 @@ class Api::HabitsController < ApplicationController
 
   private
   def habit_params
-    params.require(:habit).permit(:title, :notes, :add_sub, :dif_level, :tags, :frequency, :desc)
+    params.require(:habit).permit(:title, :notes, :add_option, :sub_option, :dif_level, :tags, :frequency)
   end
 
   def set_habit

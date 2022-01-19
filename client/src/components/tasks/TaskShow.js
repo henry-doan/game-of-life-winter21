@@ -7,7 +7,7 @@ import TaskForm from './TaskForm';
 
 const TaskShow = ({ updateTask, deleteTask }) => {
   const params = useParams();
-  const [task, setTask] = useState({ title: '', comment: '', add_sub: '', diff_levels: '', tags: '', frequency: '' })
+  const [task, setTask] = useState({ title: '', comment: '', diff_levels: '', tags: '', frequency: '' })
   const [editing, setEdit] = useState(false)
 
   useEffect( () => {
@@ -16,7 +16,7 @@ const TaskShow = ({ updateTask, deleteTask }) => {
       .catch( err => console.log(err))
   }, [])
 
-  const { title, comment, add_sub, diff_levels, tags, frequency, id } = task
+  const { title, comment, diff_levels, tags, frequency, id } = task
   return (
     <>
       { editing ? 
@@ -32,7 +32,6 @@ const TaskShow = ({ updateTask, deleteTask }) => {
         <>
           <h1>Id: {params.taskId} {title}</h1>
           <h3>comment: {comment}</h3>
-          <h3>add_sub: {add_sub}</h3>
           <h3>diff_levels: {diff_levels}</h3>
           <h3>tags: {tags}</h3>
           <h3>frequency: {frequency}</h3>
@@ -61,3 +60,12 @@ const ConnectedTaskShow = (props) => (
 )
 
 export default ConnectedTaskShow;
+
+
+
+
+
+
+
+
+
