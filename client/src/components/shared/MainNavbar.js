@@ -9,6 +9,11 @@ const MainNavbar = ({ user, handleLogout }) => {
       return (
         <>
           <Nav.Link>
+            <Link to="/dashboard">
+              Dashboard
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
             <Link to="/profile">
               Profile
             </Link>

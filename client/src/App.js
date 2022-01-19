@@ -14,6 +14,9 @@ import Tasks from './components/tasks/Tasks';
 import TaskShow from './components/tasks/TaskShow';
 import Habits from './components/habits/Habits';
 import HabitShow from './components/habits/HabitShow';
+import Activities from './components/activities/Activities';
+import ActivityShow from './components/activities/ActivityShow';
+import Dashboard from './components/shared/Dashboard';
 
 const App = () => (
   <>
@@ -23,6 +26,7 @@ const App = () => (
         <>
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/' element={<ProtectedRoute />}>
               <Route path='/profile' element={<Profile />} />
               <Route path='/rewards' element={<Rewards />} />
@@ -31,6 +35,8 @@ const App = () => (
               <Route path='/tasks/:taskId' element={<TaskShow />} />
               <Route path='/habits' element={<Habits />} />
               <Route path='/habits/:habitId' element={<HabitShow />} />
+              <Route path='/activities' element={<Activities />} />
+              <Route path='/activities/:activityId' element={<ActivityShow />} />
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />

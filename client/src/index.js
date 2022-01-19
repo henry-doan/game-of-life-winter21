@@ -10,6 +10,7 @@ import AuthProvider from './providers/AuthProvider';
 import RewardProvider from './providers/RewardProvider';
 import TaskProvider from './providers/TaskProvider';
 import HabitProvider from './providers/HabitProvider';
+import ActivityProvider from './providers/ActivityProvider';
 
 initMiddleware();
 
@@ -20,7 +21,9 @@ ReactDOM.render(
         <RewardProvider>
           <TaskProvider>
             <HabitProvider>
-              <App />
+              <ActivityProvider>
+                <App />
+              </ActivityProvider>
             </HabitProvider>
           </TaskProvider>
         </RewardProvider>
