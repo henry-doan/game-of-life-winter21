@@ -15,6 +15,8 @@ import TaskShow from './components/tasks/TaskShow';
 import Habits from './components/habits/Habits';
 import HabitShow from './components/habits/HabitShow';
 import Dashboard from './components/shared/Dashboard';
+import Activities from './components/activities/Activities';
+import ActivityShow from './components/activities/ActivityShow';
 
 const App = () => (
   <>

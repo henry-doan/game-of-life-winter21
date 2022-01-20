@@ -16,11 +16,11 @@ const ActivityProvider = ({ children }) => {
       .catch( err => console.log(err))
   }
 
-  // const addActivity = (activity) => {
-  //   axios.post('/api/activities', { activity })
-  //     .then( res => setActivities([...activities, res.data]))
-  //     .catch( err => console.log(err))
-  // }
+  const addActivity = (activity) => {
+    axios.post('/api/activities', { activity })
+      .then( res => setActivities([...activities, res.data]))
+      .catch( err => console.log(err))
+  }
 
   // const updateActivity = (id, activity) => {
   //   axios.put(`/api/activities/${id}`, { activity })
@@ -51,7 +51,7 @@ const ActivityProvider = ({ children }) => {
     <ActivityContext.Provider value={{
       activities,
       getAllActivities: getAllActivities,
-      // addActivity: addActivity,
+      addActivity: addActivity,
       // updateActivity: updateActivity,
       // deleteActivity: deleteActivity,
     }}>

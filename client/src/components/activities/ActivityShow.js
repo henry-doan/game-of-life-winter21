@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { HabitConsumer } from '../../providers/HabitProvider';
-import HabitList from './HabitList';
+import HabitList from '../habits/HabitList';
 import { Button } from 'react-bootstrap';
-import HabitForm from './HabitForm';
+import HabitForm from '../habits/HabitForm';
 
-const ActivityShow = ({ habits, tasks, title, activity_type, created_at, id }) => {
+const ActivityShow = ({ habits, tasks, title, activity_type, created_at, id, getAllActivities }) => {
  
   useEffect = () => {
     getAllActivities ()
