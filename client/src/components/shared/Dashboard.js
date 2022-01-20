@@ -34,7 +34,7 @@ const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, ge
               <TaskList tasks={tasks}/>
             </Col>
             <Col>
-              <h3>Rewards</h3>
+              <h3>Rewards:</h3>
               <br />
               <RewardList rewards={rewards}/>
             </Col>

@@ -9,6 +9,28 @@ class Api::ActivitiesController < ApplicationController
     render json: @activity
   end
 
+  def create 
+    @activity = current_user.activities.new(activity_params)
+    if @activity.save
+      render json: @activity
+    else 
+      render json: { errors: @activity.errors }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @activity.update(activity_params)
+      render json: @activity
+    else
+      render json: { errors: @activity.errors }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @activity.destroy
+    render json: { message: "activity deleted."}
+  end
+
   private
   def activity_params
     params.require(:activity).permit(:activity_type, :title)

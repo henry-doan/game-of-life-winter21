@@ -11,5 +11,5 @@ class User < ActiveRecord::Base
   has_many :tasks, dependent: :destroy
   has_many :habits, dependent: :destroy
   has_many :rewards, dependent: :destroy
-  
+  has_many :activities, dependent: :destroy
 end
