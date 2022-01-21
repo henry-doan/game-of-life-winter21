@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :rewards
     resources :habits
     resources :activities
+    post '/update-points', to: 'users#update_points'
   end
 
 end

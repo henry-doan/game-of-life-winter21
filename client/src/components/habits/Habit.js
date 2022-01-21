@@ -1,22 +1,34 @@
 import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {Link} from 'react-router-dom';
 import {ListGroup, Button} from 'react-bootstrap';
+import {AuthConsumer} from '../../providers/AuthProvider';
 
+const Habit =({ id, title, add_option, sub_option, addActivity, dif_level, user, updatePoints }) =>{
 
-const Habit =({ id, title, add_option, sub_option, addActivity }) =>{
-
-  const plusActivity = (title) => {
+  const plusActivity = (title, dif_level) => {
     const Activity = { activity_type: 'Habit', title: title }
     
     addActivity(Activity)
-    // will also increase the points
+    let newpoints = user.points + levelValue(dif_level)
+    updatePoints(newpoints)
   }
 
   const subActivity = (title) => {
     const Activity = { activity_type: 'Habit', title: title }
     
     addActivity(Activity)
-    // will also increase the points
+    
+  }
+
+  const levelValue = (dif_level) => {
+    if (dif_level === 'Easy') {
+      return user.easy
+    } else if (dif_level === 'Medium') {
+      return user.medium
+    } else {
+      return user.difficult
+    }
+
   }
 
   return(
@@ -34,7 +46,7 @@ const Habit =({ id, title, add_option, sub_option, addActivity }) =>{
       { add_option ? 
       <Button 
         variant='success'
-        onClick={()=> plusActivity(title)}
+        onClick={()=> plusActivity(title, dif_level)}
       >+</Button>
       : null
     }
@@ -48,5 +60,11 @@ const ConnectedHabit = (props) => (
     { value=> <Habit {...props} {...value} /> }
   </ActivityConsumer>
 )
+const ConnectedAuthHabit = (props) => (
+  <AuthConsumer>
+    { value=> <ConnectedHabit {...props} {...value} /> }
+  </AuthConsumer>
+)
 
-export default ConnectedHabit;
+
+export default ConnectedAuthHabit;

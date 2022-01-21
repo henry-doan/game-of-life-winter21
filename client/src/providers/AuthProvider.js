@@ -50,6 +50,14 @@ const AuthProvider = ({ children }) => {
       .catch( err => console.log(err) )
   }
 
+  const updatePoints = (points) => {
+    let data = new FormData()
+    data.append('points', points)
+    axios.post('/api/update-points', data)
+    .then( res => setUser(res.data) )
+    .catch( err => console.log(err) )
+  }
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -59,6 +67,7 @@ const AuthProvider = ({ children }) => {
       authenticated: user !== null, 
       setUser: (user) => setUser(user),
       updateUser: updateUser,
+      updatePoints: updatePoints,
     }}>
       { children }
     </AuthContext.Provider>

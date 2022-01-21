@@ -9,4 +9,14 @@ class Api::UsersController < ApplicationController
       user.points = params[:points] ? params[:points] : user.points
       user.levels = params[:levels] ? params[:levels] : user.levels
     end
+
+    def update_points
+      incomming_points = params[:points]
+      current_user.points = incomming_points
+      if current_user.save 
+        render json: current_user
+      else
+        render json: { errors: current_user.errors }, status: :unproccessable_entity 
+      end
+    end
   end

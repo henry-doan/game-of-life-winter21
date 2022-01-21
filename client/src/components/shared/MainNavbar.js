@@ -38,6 +38,7 @@ const MainNavbar = ({ user, handleLogout }) => {
               Rewards
             </Link>
           </Nav.Link>
+          <p>Points: {user.points}</p>
           <Nav.Link onClick={() => handleLogout()}>
             Logout
           </Nav.Link>
