@@ -19,6 +19,11 @@ const MainNavbar = ({ user, handleLogout }) => {
             </Link>
           </Nav.Link>
           <Nav.Link>
+            <Link to="/activities">
+              Activities
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
             <Link to="/habits">
               Habits
             </Link>

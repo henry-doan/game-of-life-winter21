@@ -32,6 +32,24 @@ const RewardForm = ({ addReward, id, award, points, updateReward }) => {
             onChange={(e) => setReward({ ...reward, award: e.target.value })}
           />
         </Form.Group>
+        <Form.Group className="mb-3" >
+          <Form.Label>Notes</Form.Label>
+          <Form.Control
+            type="text"
+            name="notes"
+            value={reward.notes}
+            onChange={(e) => setReward({ ...reward, notes: e.target.value })}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" >
+          <Form.Label>Tags</Form.Label>
+          <Form.Control
+            type="string"
+            name="tags"
+            value={reward.tags}
+            onChange={(e) => setReward({ ...reward, tags: e.target.value })}
+          />
+        </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Points</Form.Label>
           <Form.Control

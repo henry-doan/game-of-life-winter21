@@ -1,3 +1,6 @@
+
+import Dashboard from './Dashboard';
+
 const Home = () => {
   return (
     <>
@@ -6,5 +9,6 @@ const Home = () => {
     </>
   )
 }
+
 
 export default Home;

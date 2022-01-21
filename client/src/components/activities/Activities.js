@@ -15,6 +15,7 @@ const Activities = ({ activities, created_at, id, getAllActivities }) => {
 
   return (
     <>
+      <h1>All Activities Completed:</h1>
       <ListGroup>
         {
           activities.map( a =>
@@ -24,6 +25,8 @@ const Activities = ({ activities, created_at, id, getAllActivities }) => {
             )
         }
       </ListGroup>
+
+      
     </>
 
   )

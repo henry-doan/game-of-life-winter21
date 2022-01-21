@@ -2,7 +2,7 @@ class Api::TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
   
     def index
-      render json: current_user.task
+      render json: current_user.tasks
     end
   
     def show
@@ -33,7 +33,7 @@ class Api::TasksController < ApplicationController
   
     private
     def task_params
-      params.require(:task).permit(:title, :comment, :diff_levels, :tags, :frequency)
+      params.require(:task).permit(:title, :comment, :diff_levels, :tags, :frequency, :complete)
     end
     
     def set_task

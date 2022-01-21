@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-const TaskForm = ({id, title, comment, add_sub, diff_levels, tags, frequency, updateTask, addTask}) => {
-  const [task, setTask ] = useState({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily'})
+const TaskForm = ({id, title, comment, add_sub, diff_levels, tags, frequency, complete, updateTask, addTask}) => {
+  const [task, setTask ] = useState({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily', complete: false})
 
 
 useEffect( () => {
   if (id) {
-    setTask({ title, comment, add_sub, diff_levels, tags, frequency })
+    setTask({ title, comment, add_sub, diff_levels, tags, frequency, complete })
   }
 },  [])
 
@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
   } else {
     addTask(task)
   }
-  setTask({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily'})
+  setTask({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily', complete: false})
 }
 
 
@@ -60,8 +60,9 @@ return (
     <label for="negative">-</label>
     </fieldset> */}
 
+
       <label>Difficulty</label>
-      <select id="diff_levels" name="diff_levels" onChange={(e) => setTask({ ...task, dif_level: e.target.value})}> 
+      <select id="diff_levels" name="diff_levels" onChange={(e) => setTask({ ...task, diff_levels: e.target.value})}> 
         <option value='Easy' selected>Easy</option>
         <option value='Medium'>Medium</option>
         <option value='Difficult'>Difficult</option>

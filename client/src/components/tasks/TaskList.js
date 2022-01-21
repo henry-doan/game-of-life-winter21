@@ -1,14 +1,13 @@
 import { ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Task from './Task';
 
 const TaskList = ({ tasks }) => {
   return(
     <>
-      <ListGroup>
+       <ListGroup>
         { tasks.map( t => 
-          <Link to={`/tasks/${t.id}`}>
-            <ListGroup.Item>{t.title}</ListGroup.Item>
-          </Link>
+         <Task {...t} />
         )}
       </ListGroup>
     </>
