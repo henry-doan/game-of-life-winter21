@@ -15,7 +15,7 @@ const Habit =({ id, title, add_option, sub_option, addActivity, dif_level, user,
 
   const subActivity = (title, dif_level) => {
     const Activity = { activity_type: 'Habit', title: title }
-
+    
     addActivity(Activity)
     let newpoints = user.points - levelValue(dif_level)
     updatePoints(newpoints)
