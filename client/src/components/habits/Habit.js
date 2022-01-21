@@ -13,11 +13,12 @@ const Habit =({ id, title, add_option, sub_option, addActivity, dif_level, user,
     updatePoints(newpoints)
   }
 
-  const subActivity = (title) => {
+  const subActivity = (title, dif_level) => {
     const Activity = { activity_type: 'Habit', title: title }
     
     addActivity(Activity)
-    
+    let newpoints = user.points - levelValue(dif_level)
+    updatePoints(newpoints)
   }
 
   const levelValue = (dif_level) => {
@@ -36,7 +37,7 @@ const Habit =({ id, title, add_option, sub_option, addActivity, dif_level, user,
     { sub_option ? 
       <Button 
         variant='danger'
-        onClick={()=> subActivity(title)}
+        onClick={()=> subActivity(title, dif_level)}
       >-</Button>
       : null
     }
