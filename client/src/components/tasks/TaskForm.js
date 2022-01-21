@@ -60,6 +60,12 @@ return (
     <label for="negative">-</label>
     </fieldset> */}
 
+      <div onClick={() => setTask({ ...task, add_option: !task.add_option})}>
+        +
+      </div>
+      <div onClick={() => setTask({ ...task, sub_option: !task.sub_option})}>
+        -
+      </div>
 
       <label>Difficulty</label>
       <select id="diff_levels" name="diff_levels" onChange={(e) => setTask({ ...task, diff_levels: e.target.value})}> 
