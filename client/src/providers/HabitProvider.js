@@ -60,4 +60,4 @@ const HabitProvider = ({ children }) => {
   )
 }
 
-export default HabitProvider
+export default HabitProvider;

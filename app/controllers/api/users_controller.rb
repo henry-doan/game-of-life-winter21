@@ -11,8 +11,8 @@ class Api::UsersController < ApplicationController
     end
 
     def update_points
-      incomming_points = params[:points]
-      current_user.points = incomming_points
+      incoming_points = params[:points]
+      current_user.points = incoming_points
       if current_user.save 
         render json: current_user
       else

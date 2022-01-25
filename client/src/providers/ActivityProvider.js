@@ -60,4 +60,4 @@ const ActivityProvider = ({ children }) => {
   )
 }
 
-export default ActivityProvider
+export default ActivityProvider;

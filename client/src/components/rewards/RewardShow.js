@@ -5,9 +5,9 @@ import { Button } from 'react-bootstrap';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
 import { ActivityConsumer } from '../../providers/ActivityProvider';
-import { AuthConsumer } from '../../providers/AuthProvider';
+import { AuthConsumer} from '../../providers/AuthProvider';
 
-const RewardShow = ({ updateReward, deleteReward, addActivity, updatePoints, user }) => {
+const RewardShow = ({ updateReward, deleteReward, addActivity, user, updatePoints }) => {
   const params = useParams();
   const [reward, setReward] = useState({ award: '', points: '', notes: '', tags: ''})
   const [editing, setEdit] = useState(false)
@@ -19,16 +19,16 @@ const RewardShow = ({ updateReward, deleteReward, addActivity, updatePoints, use
   }, [])
 
   const addRewardActivity = ( title, points ) => {
-    const activity = {activity_type: 'Reward', title: title}
-    addActivity(activity)     
-    let newpoints = 0     
+    const Activity = {activity_type: 'Reward', title: title}
+    addActivity(Activity)
+    let newpoints = 0
     if (user.points >= points) {
       newpoints = user.points - points
-      updatePoints(newpoints)
       alert('Redeemed!');
-    } else if (user.points < points) {
+    } else  if (user.points < points) {
       alert('Not enough points.')
-    } 
+    }
+    updatePoints(newpoints)
   }
 
   const { award, points, notes, tags, id } = reward

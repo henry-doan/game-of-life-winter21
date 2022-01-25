@@ -33,7 +33,7 @@ before_action :set_reward, only: [:show, :update, :destroy]
 
   private
   def reward_params
-    params.require(:reward).permit(:award, :points, :notes, :tags)
+    params.require(:reward).permit(:award, :points, :notes, :tags, :achieved)
   end
 
   def set_reward

@@ -16,6 +16,8 @@ const Reward = ({ user, award, id, title, points, notes, tags, achieved, addActi
     } else  if (user.points < points) {
       alert('Not enough points.')
     }
+    // updateReward(id, { title, award, achieved: true, notes, tags, points })
+    // let newpoints = (user.points - redeemValue(points))
     updatePoints(newpoints)
   }
 
