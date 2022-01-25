@@ -1,32 +1,29 @@
 import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {AuthConsumer} from '../../providers/AuthProvider';
+import { RewardConsumer } from '../../providers/RewardProvider';
 import {Link} from 'react-router-dom';
-import { useReducer } from 'react';
 import { Button } from 'react-bootstrap';
-import {RewardConsumer} from '../../providers/RewardProvider';
 
-const Reward = ({ user, award, id, title, points, addActivity, updatePoints, }) => {
+const Reward = ({ user, award, id, title, points, notes, tags, achieved, addActivity, updatePoints, updateReward }) => {
 
   const addRewardActivity = ( title, points ) => {
-    const Activity = { activity_type: 'Reward', title: title }
-
+    const Activity = {activity_type: 'Reward', title: title}
     addActivity(Activity)
-    let newpoints = 0     
+    let newpoints = 0
     if (user.points >= points) {
       newpoints = user.points - points
-      updatePoints(newpoints)
       alert('Redeemed!');
-    } else if (user.points < points) {
+    } else  if (user.points < points) {
       alert('Not enough points.')
-    } 
-
+    }
+    updatePoints(newpoints)
   }
 
   return (
     <>
     
     <Link to={`/rewards/${id}`}>
-      <p>{award}</p>
+      <p>{award} Points: {points}</p>
     </Link>
     <br />
     <Button 
@@ -34,12 +31,12 @@ const Reward = ({ user, award, id, title, points, addActivity, updatePoints, }) 
       onClick={() => addRewardActivity(award, points)}
     >
     Redeem
-    </Button>
+    </Button> 
+
     <br />
     </>
   )
 }
-
 
 const ConnectedReward = (props) => (
   <ActivityConsumer>
@@ -52,7 +49,6 @@ const ConnectedRewardReward = (props) => (
     { value => <ConnectedReward {...props} {...value} /> }
   </RewardConsumer>
 )
-
 const ConnectedAuthReward = (props) => (
   <AuthConsumer>
     { value => <ConnectedRewardReward {...props} {...value} /> }
@@ -61,3 +57,4 @@ const ConnectedAuthReward = (props) => (
 
 
 export default ConnectedAuthReward;
+
