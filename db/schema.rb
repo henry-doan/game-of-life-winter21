@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_021020) do
+ActiveRecord::Schema.define(version: 2022_01_25_031539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2022_01_21_021020) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "checklists", force: :cascade do |t|
+    t.string "name"
+    t.boolean "complete"
+    t.bigint "task_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_checklists_on_task_id"
   end
 
   create_table "habits", force: :cascade do |t|
@@ -106,6 +115,7 @@ ActiveRecord::Schema.define(version: 2022_01_21_021020) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "checklists", "tasks"
   add_foreign_key "habits", "users"
   add_foreign_key "rewards", "users"
   add_foreign_key "tasks", "users"

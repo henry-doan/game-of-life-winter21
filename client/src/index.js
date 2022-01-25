@@ -11,6 +11,7 @@ import RewardProvider from './providers/RewardProvider';
 import TaskProvider from './providers/TaskProvider';
 import HabitProvider from './providers/HabitProvider';
 import ActivityProvider from './providers/ActivityProvider';
+import ChecklistProvider from './providers/ChecklistProvider';
 
 initMiddleware();
 
@@ -22,7 +23,9 @@ ReactDOM.render(
           <TaskProvider>
             <HabitProvider>
               <ActivityProvider>
-                <App />
+                <ChecklistProvider>
+                  <App />
+                </ChecklistProvider>
               </ActivityProvider>
             </HabitProvider>
           </TaskProvider>

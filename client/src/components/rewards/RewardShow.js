@@ -5,8 +5,9 @@ import { Button } from 'react-bootstrap';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
 import { ActivityConsumer } from '../../providers/ActivityProvider';
+import { AuthConsumer } from '../../providers/AuthProvider';
 
-const RewardShow = ({ updateReward, deleteReward, addActivity }) => {
+const RewardShow = ({ updateReward, deleteReward, addActivity, updatePoints, user }) => {
   const params = useParams();
   const [reward, setReward] = useState({ award: '', points: '', notes: '', tags: ''})
   const [editing, setEdit] = useState(false)
@@ -17,9 +18,17 @@ const RewardShow = ({ updateReward, deleteReward, addActivity }) => {
       .catch( err => console.log(err))
   }, [])
 
-  const addRewardActivity = ( title ) => {
+  const addRewardActivity = ( title, points ) => {
     const activity = {activity_type: 'Reward', title: title}
-    addActivity(activity) //need to run logic to see if they have enough points
+    addActivity(activity)     
+    let newpoints = 0     
+    if (user.points >= points) {
+      newpoints = user.points - points
+      updatePoints(newpoints)
+      alert('Redeemed!');
+    } else if (user.points < points) {
+      alert('Not enough points.')
+    } 
   }
 
   const { award, points, notes, tags, id } = reward
@@ -55,7 +64,7 @@ const RewardShow = ({ updateReward, deleteReward, addActivity }) => {
           </Button>
           <Button 
             variant="success"
-            onClick={() => addRewardActivity(award)}
+            onClick={() => addRewardActivity(award, points)}
           >
             Redeem
           </Button>
@@ -77,4 +86,10 @@ const ConnectedActivityRewardShow = (props) => (
   </ActivityConsumer>
 )
 
-export default ConnectedActivityRewardShow;
+const ConnectedAuthReward = (props) => (
+  <AuthConsumer>
+    { value => <ConnectedActivityRewardShow {...props} {...value} /> }
+  </AuthConsumer>
+)
+
+export default ConnectedAuthReward;

@@ -1,14 +1,12 @@
 import { ListGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import Reward from './Reward';
 
 const RewardList = ({ rewards }) => {
   return(
     <>
       <ListGroup>
-        { rewards.map( p => 
-          <Link to={`/rewards/${p.id}`}>
-            <ListGroup.Item>{p.award}</ListGroup.Item>
-          </Link>
+        { rewards.map( r => 
+            <Reward {...r} />
         )}
       </ListGroup>
     </>
