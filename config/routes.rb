@@ -8,9 +8,6 @@ Rails.application.routes.draw do
     resources :tasks do
       resources :checklists 
     end
-    resources :checklists, except: [:index, :show, :create, :update, :destroy] do
-      resources :checklistitems
-    end
     post '/update-points', to: 'users#update_points'
   end
 

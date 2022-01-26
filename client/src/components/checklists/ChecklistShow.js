@@ -4,27 +4,29 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { ChecklistConsumer } from '../../providers/ChecklistProvider';
 import ChecklistForm from './ChecklistForm';
-import ChecklistItems from '../checklistitems/ChecklistItems';
 
-const ChecklistShow = ({ updateChecklist, deleteChecklist }) => {
+const ChecklistShow = ({ updateChecklist, deleteChecklist, taskId, id }) => {
   const params = useParams();
-  const [checklist, setChecklist] = useState({ name: '', complete: '' })
+  const [checklist, setChecklist] = useState({ name: ''})
   const [editing, setEdit] = useState(false)
 
   useEffect( () => {
-    axios.get(`/api/checklist/${params.checklistId}`)
+    axios.get(`/api/tasks/${taskId}/checklists/${id}`)
       .then( res => setChecklist(res.data))
       .catch( err => console.log(err))
   }, [])
 
-  const { name, complete, id } = checklist
+  const { name } = checklist
   return (
     <>
+      
       { editing ? 
         <>
           <ChecklistForm 
             {...checklist}
+            taskId={taskId}
             updateChecklist={updateChecklist}
+            setEdit={setEdit}
           />
           <Button variant="warning" onClick={() => setEdit(false)}>Cancel</Button>
           <br />
@@ -32,14 +34,6 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist }) => {
         :
         <>
           <h1>{name}</h1>
-          <ListGroup>
-            { checklistitems.map( i => 
-      
-                  <ChecklistItems {...i} checklistId={checklistId} />
-        
-            )}
-          </ListGroup>
-
           <Button 
             variant="warning" 
             onClick={() => setEdit(true)}

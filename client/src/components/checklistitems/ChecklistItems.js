@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { ChecklistItemsConsumer } from '../../providers/ChecklistItemsProvider';
-import ChecklistItemsList from './ChecklistItemsList';
+import { ChecklistItemConsumer } from '../../providers/ChecklistItemProvider';
+import ChecklistItemList from './ChecklistItemList';
 import { useParams } from 'react-router-dom';
 import ChecklistItemForm from './ChecklistItemForm';
 import { Button, Form } from 'react-bootstrap';
 
-const Checklists = ({ getAllChecklistItems, checklistitems, addChecklistItem }) => {
+const ChecklistItems = ({ getAllChecklistItems, checklistitems, addChecklistItem }) => {
   const [adding, setAdd ] = useState(false);
 
   const params = useParams();
