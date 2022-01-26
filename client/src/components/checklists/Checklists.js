@@ -22,7 +22,7 @@ const Checklists = ({ checklists, getAllChecklists, addChecklist }) => {
         :
         <Button variant="info" onClick={() => setAdding(true)}>+</Button>
       }
-      <CheckList checklists={checklists} />
+      <ChecklistList checklists={checklists} />
     </>
   )
 }

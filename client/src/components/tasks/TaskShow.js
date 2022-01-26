@@ -4,8 +4,9 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import TaskForm from './TaskForm';
+import Checklists from '../checklists/Checklists';
 
-const TaskShow = ({ updateTask, deleteTask }) => {
+const TaskShow = ({ updateTask, deleteTask, checklist }) => {
   const params = useParams();
   const [task, setTask] = useState({ title: '', comment: '', diff_levels: '', tags: '', frequency: '' })
   const [editing, setEdit] = useState(false)
@@ -35,6 +36,7 @@ const TaskShow = ({ updateTask, deleteTask }) => {
           <h3>diff_levels: {diff_levels}</h3>
           <h3>tags: {tags}</h3>
           <h3>frequency: {frequency}</h3>
+          <Checklists taskId={id} />
           <Button 
             variant="warning" 
             onClick={() => setEdit(true)}

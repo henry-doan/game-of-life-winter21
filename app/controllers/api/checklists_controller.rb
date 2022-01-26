@@ -34,7 +34,7 @@ class Api::ChecklistsController < ApplicationController
 
   private
   def checklist_params
-    params.require(:checklist).permit(:name, :complete,)
+    params.require(:checklist).permit(:name, :complete)
   end
   
   def set_task
@@ -42,6 +42,6 @@ class Api::ChecklistsController < ApplicationController
   end
 
   def set_checklist
-    @checklist = @task.checklist.find(params[:id])
+    @checklist = @task.checklists.find(params[:id])
   end
 end
