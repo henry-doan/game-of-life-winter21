@@ -3,4 +3,5 @@ class Task < ApplicationRecord
 
   validates :title, :comment, :diff_levels, :tags, :frequency, presence: true
 
+  has_many :checklists, dependent: :destroy
 end

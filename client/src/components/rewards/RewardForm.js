@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const RewardForm = ({ addReward, id, award, points, updateReward }) => {
-  const [reward, setReward] = useState({ award: '', points: 0 })
+const RewardForm = ({ addReward, id, award, points, notes, tags, updateReward }) => {
+  const [reward, setReward] = useState({ award: '', points: 0, notes: '', tags: '' })
 
   useEffect(() => {
     if (id) {
-      setReward({ award, points })
+      setReward({ award, points, notes, tags })
     }
   }, [])
 
@@ -17,7 +17,7 @@ const RewardForm = ({ addReward, id, award, points, updateReward }) => {
     } else {
       addReward(reward)
     }
-    setReward(({ award: '', points: 0 }))
+    setReward(({ award: '', points: 0, notes: '', tags: '' }))
   }
 
   return (

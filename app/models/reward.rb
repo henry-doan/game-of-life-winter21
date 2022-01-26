@@ -3,5 +3,5 @@ class Reward < ApplicationRecord
 
   validates :award, :points, :tags, :notes, presence: true
 
-  has_many :checklists, dependent: :destroy
+
 end
