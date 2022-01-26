@@ -3,5 +3,4 @@ class Reward < ApplicationRecord
 
   validates :award, :points, :tags, :notes, presence: true
 
-
 end

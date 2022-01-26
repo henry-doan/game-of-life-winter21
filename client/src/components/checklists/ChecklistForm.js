@@ -14,7 +14,6 @@ const ChecklistForm = ({ addChecklist, taskId, id, name, updateChecklist, setEdi
     e.preventDefault()
     if (id) {
       updateChecklist(taskId, id, checklist)
-      setEdit(false)
     } else {
       addChecklist(taskId, checklist)
     }

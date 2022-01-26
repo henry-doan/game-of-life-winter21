@@ -1,16 +1,15 @@
 import { ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Checklists from './Checklists';
-import ChecklistShow from './ChecklistShow';
 
 const ChecklistList = ({ checklists, taskId, id}) => {
   return(
     <>
       <ListGroup>
         { checklists.map( c => 
-  
-              <ChecklistShow {...c} taskId={taskId} />
-    
+           <Link to={`/tasks/${taskId}/checklists/${id}`} >
+             <ListGroup.Item>{c.name}</ListGroup.Item>
+           </Link>
         )}
       </ListGroup>
     </>

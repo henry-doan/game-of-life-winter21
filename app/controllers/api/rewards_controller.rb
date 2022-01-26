@@ -1,5 +1,5 @@
 class Api::RewardsController < ApplicationController
-before_action :set_reward, only: [:show, :update, :destroy]
+  before_action :set_reward, only: [:show, :update, :destroy]
 
   def index
     render json: current_user.rewards

@@ -42,6 +42,7 @@ return (
       />
 
 
+
       <label>Difficulty</label>
       <select id="diff_levels" name="diff_levels" onChange={(e) => setTask({ ...task, diff_levels: e.target.value})}> 
         <option value='Easy' selected>Easy</option>
