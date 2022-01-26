@@ -3,15 +3,17 @@ import { AuthConsumer } from '../../providers/AuthProvider';
 // import Moment from 'react-moment';
 import { useEffect, useState } from 'react';
 import { Form, Row, Col, Image, Container, Button } from 'react-bootstrap';
+import { useParams } from 'react-router';
 
 
-const Profile = ({ user, updateUser }) => {
+const Profile = ({ name, email, image, updateUser }) => {
   const [editing, setEditing] = useState(false)
-  const [formVals, setFormValue] = useState({ name: '', email: '', image: '' })
+  // const [formVals, setFormValue] = useState({ name: '', email: '', image: '' })
+  const [user, setUser] = useState({ name: '', image: '', email: '' })
 
   useEffect( () => {
     const { name, email, image } = user
-    setFormValue({ name, email, image })
+    setUser({ name, email, image })
   }, [])
 
 const profileView = () => {
@@ -20,11 +22,11 @@ const profileView = () => {
   return (
     <>
       <Col md="4">
-        <Image src={formVals.image || defaultImage } />
+        <Image src={ image || defaultImage } />
       </Col>
       <Col md="8">
-        <h1>{formVals.name}</h1>
-        <h1>{formVals.email}</h1>
+        <h1>{name}</h1>
+        <h1>{email}</h1>
       </Col>
     </>
   )
@@ -32,7 +34,7 @@ const profileView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateUser(user, formVals)
+    updateUser(user)
     setEditing(false)
   }
 
@@ -45,9 +47,9 @@ const profileView = () => {
             <Form.Control 
               type="text" 
               name="image"
-              value={formVals.image}
+              value={user.image}
               required
-              onChange={(e) => setFormValue({...formVals, image: e.target.value })}
+              onChange={(e) => setUser({...user, image: e.target.value })}
             />
           </Form.Group>
         </Col>
@@ -57,9 +59,9 @@ const profileView = () => {
             <Form.Control 
               type="text" 
               name="name"
-              value={formVals.name}
+              value={user.name}
               required
-              onChange={(e) => setFormValue({...formVals, name: e.target.value })}
+              onChange={(e) => setUser({...user, name: e.target.value })}
             />
           </Form.Group>
           <Form.Group>
@@ -67,9 +69,9 @@ const profileView = () => {
             <Form.Control 
               type="email" 
               name="email"
-              value={formVals.email}
+              value={user.email}
               required
-              onChange={(e) => setFormValue({...formVals, email: e.target.value })}
+              onChange={(e) => setUser({...user, email: e.target.value })}
             />
           </Form.Group>
           <Button type="submit">Update</Button>
