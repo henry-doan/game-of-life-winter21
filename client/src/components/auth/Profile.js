@@ -13,20 +13,19 @@ const Profile = ({ name, email, image, updateUser }) => {
 
   useEffect( () => {
     const { name, email, image } = user
-    setUser({ name, email, image })
+    setUser({ name: '', email: '', image: '' })
   }, [])
 
 const profileView = () => {
   const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
-
   return (
     <>
       <Col md="4">
         <Image src={ image || defaultImage } />
       </Col>
       <Col md="8">
-        <h1>{name}</h1>
-        <h1>{email}</h1>
+        <h1>Name: {name}</h1>
+        <h1>Email: {email}</h1>
       </Col>
     </>
   )
@@ -84,7 +83,7 @@ const profileView = () => {
     <>
     <Container>
         <h1>Profile</h1>
-        <hr />
+        <br />
         <Row>
           { editing ? editView() : profileView() }
           <Col>

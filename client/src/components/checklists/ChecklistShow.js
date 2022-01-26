@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { ChecklistConsumer } from '../../providers/ChecklistProvider';
 import ChecklistForm from './ChecklistForm';
+import ChecklistItems from '../checklistitems/ChecklistItems';
 
 const ChecklistShow = ({ updateChecklist, deleteChecklist }) => {
   const params = useParams();
@@ -30,8 +31,15 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist }) => {
         </>
         :
         <>
-          <h1>Id: {params.checklistId} {name}</h1>
-          <h3>complete: {complete}</h3>
+          <h1>{name}</h1>
+          <ListGroup>
+            { checklistitems.map( i => 
+      
+                  <ChecklistItems {...i} checklistId={checklistId} />
+        
+            )}
+          </ListGroup>
+
           <Button 
             variant="warning" 
             onClick={() => setEdit(true)}
