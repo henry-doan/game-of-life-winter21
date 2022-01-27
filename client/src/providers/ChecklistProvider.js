@@ -42,7 +42,7 @@ const ChecklistProvider = ({ children }) => {
       .then( res => {
         setChecklists(checklists.filter( r => r.id !== id))
         alert(res.data.message)
-        navigate(`/tasks/${taskId}/checklists`)
+        navigate(`/tasks`)
       })
       .catch( err => console.log(err))
   }

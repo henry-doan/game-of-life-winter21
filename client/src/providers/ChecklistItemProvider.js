@@ -32,7 +32,7 @@ const ChecklistItemProvider = ({ children }) => {
             return c
         })
         setChecklistItems(newUpdatedChecklistItems)
-        navigate(`/checklists`)
+        navigate(`/tasks`)
       })
       .catch( err => console.log(err))
   }
@@ -42,7 +42,7 @@ const ChecklistItemProvider = ({ children }) => {
       .then( res => {
         setChecklistItems(checklistitems.filter( r => r.id !== id))
         alert(res.data.message)
-        navigate(`/checklists/${checklistId}/checklistitems`)
+        navigate(`/tasks`)
       })
       .catch( err => console.log(err))
   }

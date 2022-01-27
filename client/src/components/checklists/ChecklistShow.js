@@ -45,7 +45,7 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskI
           </Button>
           <Button 
             variant="danger"
-            onClick={() => deleteChecklist(id)}
+            onClick={() => deleteChecklist(taskId, id)}
           >
             Delete
           </Button>
