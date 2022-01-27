@@ -28,7 +28,7 @@ const Checklists = ({ getAllChecklists, checklists, addChecklist }) => {
         <Modal.Body>
           <ChecklistForm
             addChecklist={addChecklist}
-            platformId={params.taskId}
+            taskId={params.taskId}
             setAdd={setAdd}
           />
         </Modal.Body>

@@ -5,13 +5,13 @@ import { useParams } from 'react-router-dom';
 import ChecklistItemForm from './ChecklistItemForm';
 import { Button, Form } from 'react-bootstrap';
 
-const ChecklistItems = ({ getAllChecklistItems, checklistitems, addChecklistItem }) => {
+const ChecklistItems = ({ getAllChecklistItems, checklistitems, checklistId, addChecklistItem }) => {
   const [adding, setAdd ] = useState(false);
 
-  const params = useParams();
+  // const params = useParams();
 
   useEffect( () => {
-    getAllChecklistItems(params.checklistId)
+    getAllChecklistItems(checklistId)
   }, [])
   
   return (
@@ -23,11 +23,11 @@ const ChecklistItems = ({ getAllChecklistItems, checklistitems, addChecklistItem
 
           <ChecklistItemForm
             addChecklistItem={addChecklistItem}
-            checklistId={params.checklistId}
+            checklistId={checklistId}
             setAdd={setAdd}
           />
         
-      <ChecklistItemList checklistitems={checklistitems} checklistId={params.checklistId} />
+      <ChecklistItemList checklistitems={checklistitems} checklistId={checklistId} />
     </>
   )
 }

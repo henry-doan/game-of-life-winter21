@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, ListGroup } from 'react-bootstrap';
 import { ChecklistConsumer } from '../../providers/ChecklistProvider';
 import ChecklistForm from './ChecklistForm';
+import ChecklistItems from '../checklistitems/ChecklistItems';
+import { ChecklistItemConsumer } from '../../providers/ChecklistItemProvider';
 
-const ChecklistShow = ({ updateChecklist, deleteChecklist, taskId, id }) => {
+const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskId, id }) => {
   const params = useParams();
   const [checklist, setChecklist] = useState({ name: ''})
   const [editing, setEdit] = useState(false)
@@ -34,6 +36,7 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist, taskId, id }) => {
         :
         <>
           <h1>{name}</h1>
+          <ChecklistItems checklistId={id} />   
           <Button 
             variant="warning" 
             onClick={() => setEdit(true)}
@@ -57,5 +60,6 @@ const ConnectedChecklistShow = (props) => (
     { value => <ChecklistShow {...props} {...value} /> }
   </ChecklistConsumer>
 )
+
 
 export default ConnectedChecklistShow;

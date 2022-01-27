@@ -11,7 +11,7 @@ const ChecklistItemShow = ({ updateChecklistItem, deleteChecklistItem, checklist
   const [editing, setEdit] = useState(false)
 
   useEffect( () => {
-    axios.get(`/api/checklist/${checklistId}/checklistitems/${id}`)
+    axios.get(`/api/checklists/${checklistId}/checklistitems/${id}`)
       .then( res => setChecklistItem(res.data))
       .catch( err => console.log(err))
   }, [])

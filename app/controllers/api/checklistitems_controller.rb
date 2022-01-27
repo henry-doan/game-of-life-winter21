@@ -45,4 +45,4 @@ class Api::ChecklistitemsController < ApplicationController
     @checklistitem = @checklist.checklistitems.find(params[:id])
   end
 end
-end
+

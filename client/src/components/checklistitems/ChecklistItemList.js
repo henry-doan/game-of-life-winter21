@@ -1,13 +1,12 @@
 import { ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import ChecklistItem from './ChecklistItem';
 import ChecklistItemShow from './ChecklistItemShow';
 
-const ChecklistItemList = ({ checklistItem, checklistId, id}) => {
+const ChecklistItemList = ({ checklistitems, checklistId, id}) => {
   return(
     <>
       <ListGroup>
-        { checklistItem.map( c => 
+        { checklistitems.map( c => 
   
               <ChecklistItemShow {...c} checklistId={checklistId} />
     
