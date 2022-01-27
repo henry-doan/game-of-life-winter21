@@ -34,7 +34,7 @@ class Api::ChecklistitemsController < ApplicationController
 
   private
   def checklistitem_params
-    params.require(:checklistitem).permit(:name)
+    params.require(:checklistitem).permit(:name, :complete)
   end
   
   def set_checklist

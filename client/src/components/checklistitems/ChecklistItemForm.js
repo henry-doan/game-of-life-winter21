@@ -6,6 +6,9 @@ const ChecklistItemForm = ({ addChecklistItem, checklistId, id, name, updateChec
   const [checklistitem, setChecklistItem] = useState({ name: '' })
   
 
+
+
+
   useEffect( () => {
     if (id) {
       setChecklistItem({ name })
@@ -19,6 +22,7 @@ const ChecklistItemForm = ({ addChecklistItem, checklistId, id, name, updateChec
       setEdit(false)
     } else {
       addChecklistItem(checklistId, checklistitem)
+      setAdd(false)
     }
     setChecklistItem({ name: '' })
   }
