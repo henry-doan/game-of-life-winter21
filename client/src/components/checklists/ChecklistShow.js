@@ -9,7 +9,7 @@ import { ChecklistItemConsumer } from '../../providers/ChecklistItemProvider';
 
 const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskId, id }) => {
   const params = useParams();
-  const [checklist, setChecklist] = useState({ name: ''})
+  const [checklist, setChecklist] = useState({ name: '', complete: true})
   const [editing, setEdit] = useState(false)
 
   useEffect( () => {
@@ -18,7 +18,7 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskI
       .catch( err => console.log(err))
   }, [])
 
-  const { name } = checklist
+  const { name, complete } = checklist
   return (
     <>
       
@@ -35,7 +35,9 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskI
         </>
         :
         <>
-          <h1>{name}</h1>
+        <br />
+          <h3>{name}</h3>
+  
           <ChecklistItems checklistId={id} />   
           <Button 
             variant="warning" 
@@ -54,6 +56,7 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskI
     </>
   )
 }
+
 
 const ConnectedChecklistShow = (props) => (
   <ChecklistConsumer>

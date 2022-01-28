@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import TaskForm from './TaskForm';
 import Checklists from '../checklists/Checklists';
+import styled from 'styled-components';
 
 const TaskShow = ({ updateTask, deleteTask, checklist }) => {
   const params = useParams();
@@ -31,11 +32,24 @@ const TaskShow = ({ updateTask, deleteTask, checklist }) => {
         </>
         :
         <>
-          <h1>Id: {params.taskId} {title}</h1>
-          <h3>comment: {comment}</h3>
-          <h3>diff_levels: {diff_levels}</h3>
-          <h3>tags: {tags}</h3>
-          <h3>frequency: {frequency}</h3>
+        <br />
+        <Card style={{ width: '18rem' }}>
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">Difficulty Level: {diff_levels}</Card.Subtitle>
+          <Card.Text>
+            {comment}
+          </Card.Text>
+          <Card.Link variant="warning" onClick={() => setEdit(true)}>Edit</Card.Link>
+          <Card.Link  variant="danger" onClick={() => deleteTask(id)}>Delete</Card.Link>
+          <Checklists taskId={id} />
+          </Card.Body>
+        </Card>
+
+
+          {/* <HeaderText fsize="large">Task: {title}</HeaderText>
+          <HeaderText2 fsize="small">Comment: {comment}  Difficulty Level: {diff_levels}</HeaderText2>
+          <HeaderText2 fsize="small">Tags: {tags} Frequency: {frequency}</HeaderText2>
           <Checklists taskId={id} />
           <Button 
             variant="warning" 
@@ -48,12 +62,35 @@ const TaskShow = ({ updateTask, deleteTask, checklist }) => {
             onClick={() => deleteTask(id)}
           >
             Delete
-          </Button>
-        </>
+      </Button> */}
+        </> 
       }
     </>
   )
 }
+
+const fontSize = (size) => {
+  switch(size) {
+    case 'large':
+      return '4rem';
+    case 'small':
+      return '1rem';
+    default:
+      return '2rem';
+  }
+}
+
+const HeaderText = styled.h1`
+  color: green !important;
+  text-align: center;
+  font-size: ${props => fontSize(props.fSize)} !important;
+`
+const HeaderText2 = styled.h2`
+  color: black !important;
+  text-align: center;
+  font-size: ${props => fontSize(props.fSize)} !important;
+`
+
 
 const ConnectedTaskShow = (props) => (
   <TaskConsumer>

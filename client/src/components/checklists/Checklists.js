@@ -16,7 +16,7 @@ const Checklists = ({ getAllChecklists, checklists, addChecklist }) => {
   
   return (
     <>
-    <h1>Checklists</h1>
+    <p>Add Checklists</p>
     <Button variant="primary" onClick={() => setAdd(true)}>
         +
       </Button>

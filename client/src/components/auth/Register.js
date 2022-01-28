@@ -47,6 +47,7 @@ const Register = ({ handleRegister }) => {
                 />
               </Form.Group>
             </Col>
+            
             <Col>
               <Form.Group className="mb-3">
                 <Form.Label>Profile Image</Form.Label>

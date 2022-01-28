@@ -6,8 +6,13 @@ class Api::UsersController < ApplicationController
       user.name = params[:name] ? params[:name] : user.name 
       user.email = params[:email] ? params[:email] : user.email
       user.image = params[:image] ? params[:image] : user.image
-      user.points = params[:points] ? params[:points] : user.points
-      user.levels = params[:levels] ? params[:levels] : user.levels
+      # user.points = params[:points] ? params[:points] : user.points
+      # user.levels = params[:levels] ? params[:levels] : user.levels
+      if user.save 
+        render json: user 
+      else 
+        render json: { errors: user.errors }, status: :unprocessable_entity
+      end
     end
 
     def update_points
@@ -16,7 +21,7 @@ class Api::UsersController < ApplicationController
       if current_user.save 
         render json: current_user
       else
-        render json: { errors: current_user.errors }, status: :unproccessable_entity 
+        render json: { errors: current_user.errors }, status: :unprocessable_entity 
       end
     end
   end

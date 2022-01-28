@@ -7,8 +7,9 @@ import ChecklistItemForm from './ChecklistItemForm';
 
 const ChecklistItemShow = ({ updateChecklistItem, deleteChecklistItem, checklistId, id }) => {
   const params = useParams();
-  const [checklistitem, setChecklistItem] = useState({ name: ''})
+  const [checklistitem, setChecklistItem] = useState({ name: '', complete: false})
   const [editing, setEdit] = useState(false)
+  const [checked, setChecked] = useState(false);
 
   useEffect( () => {
     axios.get(`/api/checklists/${checklistId}/checklistitems/${id}`)
@@ -16,7 +17,7 @@ const ChecklistItemShow = ({ updateChecklistItem, deleteChecklistItem, checklist
       .catch( err => console.log(err))
   }, [])
 
-  const { name } = checklistitem
+  const { name, complete } = checklistitem
   return (
     <>
       
@@ -33,16 +34,27 @@ const ChecklistItemShow = ({ updateChecklistItem, deleteChecklistItem, checklist
         </>
         :
         <>
-          <h1>{name}</h1>
+          
+            <form>
+              <input
+                type="checkbox"
+                checked={checked}
+                value={checklistitem.complete}
+                onChange={(e) => setChecklistItem({...checklistitem, complete: e.target.checked })}
+              />
+            </form>
+            <p style={complete ? {...styles.completed} : null}>{name}</p>
           <Button 
-            variant="warning" 
+            variant="info" 
             onClick={() => setEdit(true)}
+            size="sm" 
           >
             Edit
           </Button>
           <Button 
-            variant="danger"
+            variant="light"
             onClick={() => deleteChecklistItem(checklistId, id)}
+            size="sm" 
           >
             Delete
           </Button>
@@ -50,6 +62,13 @@ const ChecklistItemShow = ({ updateChecklistItem, deleteChecklistItem, checklist
       }
     </>
   )
+}
+
+const styles = {
+  completed: {
+    color: 'grey',
+    textDecoration: 'line-through'
+  }
 }
 
 const ConnectedChecklistItemShow = (props) => (

@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const handleRegister = (user) =>{
-    axios.post("/api/auth", user)
+    axios.post('/api/auth', user)
       .then( res => {
         setUser(res.data.data)
         navigate('/')
@@ -42,8 +42,8 @@ const AuthProvider = ({ children }) => {
     data.append('image', user.image);
     data.append('name', user.name);
     data.append('email', user.email);
-    data.append('levels', user.levels);
-    data.append('points', user.points);
+    // data.append('levels', user.levels);
+    // data.append('points', user.points);
     // data.append('password', user.password);
     axios.put(`/api/users/${id}`, data)
       .then( res => setUser(res.data) )

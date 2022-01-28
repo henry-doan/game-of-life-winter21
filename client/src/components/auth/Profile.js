@@ -6,14 +6,14 @@ import { Form, Row, Col, Image, Container, Button } from 'react-bootstrap';
 import { useParams } from 'react-router';
 
 
-const Profile = ({ name, email, image, updateUser }) => {
+const Profile = ({ name, email, image, id, updateUser }) => {
   const [editing, setEditing] = useState(false)
   // const [formVals, setFormValue] = useState({ name: '', email: '', image: '' })
   const [user, setUser] = useState({ name: '', image: '', email: '' })
 
   useEffect( () => {
-    const { name, email, image } = user
-    setUser({ name: '', email: '', image: '' })
+    // const { name, email, image } = user
+    setUser({ name, email, image })
   }, [])
 
 const profileView = () => {
@@ -33,7 +33,7 @@ const profileView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateUser(user)
+    updateUser(id, user)
     setEditing(false)
   }
 
@@ -99,7 +99,7 @@ const profileView = () => {
 
 const ConnectedProfile = (props) => (
   <AuthConsumer>
-    { value => <Profile {...props} {...value} />}
+    { value => <Profile {...props} {...value.user} updateUser={value.updateUser} />}
   </AuthConsumer>
 )
 
