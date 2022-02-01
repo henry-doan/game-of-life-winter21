@@ -2,7 +2,7 @@ import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {AuthConsumer} from '../../providers/AuthProvider';
 import {Link} from 'react-router-dom';
 import { useReducer } from 'react';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import {RewardConsumer} from '../../providers/RewardProvider';
 
 const Reward = ({ user, award, id, title, points, addActivity, updatePoints, }) => {
@@ -29,12 +29,12 @@ const Reward = ({ user, award, id, title, points, addActivity, updatePoints, }) 
       <p>{award}</p>
     </Link>
     <br />
-    <Button 
+    <button 
       variant="success"
       onClick={() => addRewardActivity(award, points)}
     >
     Redeem
-    </Button>
+    </button>
     <br />
     </>
   )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import { HabitConsumer } from '../../providers/HabitProvider';
 import HabitForm from './HabitForm';
 
@@ -25,7 +25,7 @@ const HabitShow = ({ updateHabit, deleteHabit }) => {
             {...habit}
             updateHabit={updateHabit}
           />
-          <Button variant="warning" onClick={() => setEdit(false)}>Cancel</Button>
+          <button variant="warning" onClick={() => setEdit(false)}>Cancel</button>
           <br />
         </>
         :
@@ -37,18 +37,18 @@ const HabitShow = ({ updateHabit, deleteHabit }) => {
           <h3>dif_level: {dif_level}</h3>
           <h3>tags: {tags}</h3>
           <h3>frequency: {frequency}</h3>
-          <Button 
+          <button 
             variant="warning" 
             onClick={() => setEdit(true)}
           >
             Edit
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant="danger"
             onClick={() => deleteHabit(id)}
           >
             Delete
-          </Button>
+          </button>
         </>
       }
     </>

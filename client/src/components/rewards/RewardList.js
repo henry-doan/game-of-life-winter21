@@ -1,14 +1,14 @@
-import { ListGroup } from 'react-bootstrap';
+// import { ListGroup } from 'react-bootstrap';
 import Reward from './Reward';
 
 const RewardList = ({ rewards }) => {
   return(
     <>
-      <ListGroup>
+      <div>
         { rewards.map( r => 
             <Reward {...r} />
         )}
-      </ListGroup>
+      </div>
     </>
   )
 }

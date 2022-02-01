@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
+// import { Form, Button } from 'react-bootstrap';
 
 
 const ChecklistItemForm = ({ addChecklistItem, checklistId, id, name, updateChecklistItem, setEdit, setAdd}) => {
@@ -29,20 +29,20 @@ const ChecklistItemForm = ({ addChecklistItem, checklistId, id, name, updateChec
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" >
-          <Form.Label>ChecklistItem Name:</Form.Label>
-          <Form.Control 
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3" >
+          <label>ChecklistItem Name:</label>
+          <input 
             type="text"
             name="name"
             value={checklistitem.name}
             onChange={(e) => setChecklistItem({ ...checklistitem, name: e.target.value })} 
           />
-        </Form.Group>
-        <Button variant="primary" type="submit">
+        </div>
+        <button variant="primary" type="submit">
           Submit
-        </Button>
-      </Form>
+        </button>
+      </form>
       <br />
     </>
   )

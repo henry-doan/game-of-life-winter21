@@ -3,7 +3,7 @@
 // import RewardShow from '../rewards/RewardShow';
 import { useState, useEffect } from 'react';
 import {ActivityConsumer} from '../../providers/ActivityProvider';
-import {ListGroup} from 'react-bootstrap';
+// import {ListGroup} from 'react-bootstrap';
 
 const Activities = ({ activities, created_at, id, getAllActivities }) => {
   const [adding, setAdding] = useState(false)
@@ -16,15 +16,15 @@ const Activities = ({ activities, created_at, id, getAllActivities }) => {
   return (
     <>
       <h1>All Activities Completed:</h1>
-      <ListGroup>
+      <div>
         {
           activities.map( a =>
-            <ListGroup.Item> 
+            <div> 
               {a.activity_type} {a.title} {a.created_at} 
-            </ListGroup.Item>
+            </div>
             )
         }
-      </ListGroup>
+      </div>
 
       
     </>

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button, Card } from 'react-bootstrap';
+// import { Button, Card } from 'react-bootstrap';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import TaskForm from './TaskForm';
 import Checklists from '../checklists/Checklists';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const TaskShow = ({ updateTask, deleteTask, checklist }) => {
   const params = useParams();
@@ -27,24 +28,23 @@ const TaskShow = ({ updateTask, deleteTask, checklist }) => {
             {...task}
             updateTask={updateTask}
           />
-          <Button variant="warning" onClick={() => setEdit(false)}>Cancel</Button>
+          <button variant="warning" onClick={() => setEdit(false)}>Cancel</button>
           <br />
         </>
         :
         <>
         <br />
-        <Card style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">Difficulty Level: {diff_levels}</Card.Subtitle>
-          <Card.Text>
+        {/* <Card style={{ width: '18rem' }}> */}
+        <div>
+          <h1>{title}</h1>
+          <h3>Difficulty Level: {diff_levels}</h3>
+          <p>
             {comment}
-          </Card.Text>
-          <Card.Link variant="warning" onClick={() => setEdit(true)}>Edit</Card.Link>
-          <Card.Link  variant="danger" onClick={() => deleteTask(id)}>Delete</Card.Link>
+          </p>
+          <Link variant="warning" onClick={() => setEdit(true)}>Edit</Link>
+          <Link  variant="danger" onClick={() => deleteTask(id)}>Delete</Link>
           <Checklists taskId={id} />
-          </Card.Body>
-        </Card>
+          </div>
 
 
           {/* <HeaderText fsize="large">Task: {title}</HeaderText>

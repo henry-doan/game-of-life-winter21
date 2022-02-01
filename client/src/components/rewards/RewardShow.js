@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
 import { ActivityConsumer } from '../../providers/ActivityProvider';
@@ -40,7 +40,7 @@ const RewardShow = ({ updateReward, deleteReward, addActivity, updatePoints, use
             {...reward}
             updateReward={updateReward}
           />
-          <Button variant="warning" onClick={() => setEdit(false)}>Cancel</Button>
+          <button onClick={() => setEdit(false)}>Cancel</button>
           <br />
         </>
         :
@@ -50,24 +50,21 @@ const RewardShow = ({ updateReward, deleteReward, addActivity, updatePoints, use
           <h5>Notes: {notes}
           </h5>
           <h5>Tags: {tags}</h5>
-          <Button 
-            variant="warning" 
+          <button 
             onClick={() => setEdit(true)}
           >
             Edit
-          </Button>
-          <Button 
-            variant="danger"
+          </button>
+          <button 
             onClick={() => deleteReward(id)}
           >
             Delete
-          </Button>
-          <Button 
-            variant="success"
+          </button>
+          <button 
             onClick={() => addRewardActivity(award, points)}
           >
             Redeem
-          </Button>
+          </button>
         </>
       }
     </>

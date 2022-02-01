@@ -1,6 +1,6 @@
 import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {Link} from 'react-router-dom';
-import {ListGroup, Button} from 'react-bootstrap';
+// import {ListGroup, Button} from 'react-bootstrap';
 import {AuthConsumer} from '../../providers/AuthProvider';
 
 const Habit =({ id, title, add_option, sub_option, addActivity, dif_level, user, updatePoints }) =>{
@@ -35,20 +35,20 @@ const Habit =({ id, title, add_option, sub_option, addActivity, dif_level, user,
   return(
     <>
     { sub_option ? 
-      <Button 
+      <button 
         variant='danger'
         onClick={()=> subActivity(title, dif_level)}
-      >-</Button>
+      >-</button>
       : null
     }
       <Link to={`/habits/${id}`}>
         <p>{title}</p>
       </Link>
       { add_option ? 
-      <Button 
+      <button 
         variant='success'
         onClick={()=> plusActivity(title, dif_level)}
-      >+</Button>
+      >+</button>
       : null
     }
     <br />

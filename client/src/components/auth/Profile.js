@@ -2,13 +2,13 @@
 import { AuthConsumer } from '../../providers/AuthProvider';
 // import Moment from 'react-moment';
 import { useEffect, useState } from 'react';
-import { Form, Row, Col, Image, Container, Button } from 'react-bootstrap';
+// import { form, row, col, Image, Container, button } from 'react-bootstrap';
 import { useParams } from 'react-router';
 
 
 const Profile = ({ name, email, image, id, updateUser }) => {
   const [editing, setEditing] = useState(false)
-  // const [formVals, setFormValue] = useState({ name: '', email: '', image: '' })
+  // const [formVals, setformValue] = useState({ name: '', email: '', image: '' })
   const [user, setUser] = useState({ name: '', image: '', email: '' })
 
   useEffect( () => {
@@ -20,13 +20,13 @@ const profileView = () => {
   const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   return (
     <>
-      <Col md="4">
-        <Image src={ image || defaultImage } />
-      </Col>
-      <Col md="8">
+      <col md="4">
+        <image src={ image || defaultImage } />
+      </col>
+      <col md="8">
         <h1>Name: {name}</h1>
         <h1>Email: {email}</h1>
-      </Col>
+      </col>
     </>
   )
   }
@@ -39,60 +39,60 @@ const profileView = () => {
 
   const editView = () => {
     return(
-      <Form onSubmit={handleSubmit}>
-        <Col md="4">
-        <Form.Group>
-            <Form.Label>Image</Form.Label>
-            <Form.Control 
+      <form onSubmit={handleSubmit}>
+        <col md="4">
+        <div>
+            <label>Image</label>
+            <input 
               type="text" 
               name="image"
               value={user.image}
               required
               onChange={(e) => setUser({...user, image: e.target.value })}
             />
-          </Form.Group>
-        </Col>
-        <Col md="8">
-          <Form.Group>
-            <Form.Label>Name</Form.Label>
-            <Form.Control 
+          </div>
+        </col>
+        <col md="8">
+          <div>
+            <label>Name</label>
+            <input 
               type="text" 
               name="name"
               value={user.name}
               required
               onChange={(e) => setUser({...user, name: e.target.value })}
             />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control 
+          </div>
+          <div>
+            <label>Email</label>
+            <input 
               type="email" 
               name="email"
               value={user.email}
               required
               onChange={(e) => setUser({...user, email: e.target.value })}
             />
-          </Form.Group>
-          <Button type="submit">Update</Button>
-        </Col>
-      </Form>
+          </div>
+          <button type="submit">Update</button>
+        </col>
+      </form>
     )
     }
   
   return (
     <>
-    <Container>
+    <container>
         <h1>Profile</h1>
         <br />
-        <Row>
+        <row>
           { editing ? editView() : profileView() }
-          <Col>
-            <Button onClick={() => setEditing(!editing)}>
+          <col>
+            <button onClick={() => setEditing(!editing)}>
               { editing ? 'cancel' : 'edit' }
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+            </button>
+          </col>
+        </row>
+      </container>
       </>
   )
 }

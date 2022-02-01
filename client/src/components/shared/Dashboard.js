@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { HabitConsumer,  } from '../../providers/HabitProvider';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import { RewardConsumer } from '../../providers/RewardProvider';
-import { Col, Row, Container } from 'react-bootstrap';
+// import { Col, Row, Container } from 'react-bootstrap';
 
 const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, getAllRewards}) => {
 
@@ -21,25 +21,25 @@ const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, ge
     return (
     <>
       <h1>Dashboard</h1>
-      <Container>
-          <Row>
-            <Col>
+      <container>
+          <row>
+            <col>
               <h3>Habits:</h3>
               <br />
               <HabitList habits={habits}/>
-            </Col>
-            <Col>
+            </col>
+            <col>
               <h3>Tasks: </h3>
               <br />
               <TaskList tasks={tasks}/>
-            </Col>
-            <Col>
+            </col>
+            <col>
               <h3>Rewards:</h3>
               <br />
               <RewardList rewards={rewards}/>
-            </Col>
-          </Row>
-      </Container>
+            </col>
+          </row>
+      </container>
     </>
 
   )

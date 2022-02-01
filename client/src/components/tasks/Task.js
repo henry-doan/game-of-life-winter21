@@ -1,6 +1,6 @@
 import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {Link} from 'react-router-dom';
-import {ListGroup, Button} from 'react-bootstrap';
+// import {ListGroup, Button} from 'react-bootstrap';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import {AuthConsumer} from '../../providers/AuthProvider';
 
@@ -29,11 +29,10 @@ const Task =({ user, id, title, complete, comment, diff_levels, tags, frequency,
   return(
     <>
     { !complete ? 
-      <Button 
-        variant='warning'
+      <button 
         onClick={()=> plusActivity(title, diff_levels)}
 
-      >+</Button>
+      >+</button>
       : null
     }
       <Link to={`/tasks/${id}`}>

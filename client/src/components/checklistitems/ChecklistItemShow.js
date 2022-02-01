@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import { ChecklistItemConsumer } from '../../providers/ChecklistItemProvider';
 import ChecklistItemForm from './ChecklistItemForm';
 
@@ -29,7 +29,7 @@ const ChecklistItemShow = ({ updateChecklistItem, deleteChecklistItem, checklist
             updateChecklistItem={updateChecklistItem}
             setEdit={setEdit}
           />
-          <Button variant="warning" onClick={() => setEdit(false)}>Cancel</Button>
+          <button variant="warning" onClick={() => setEdit(false)}>Cancel</button>
           <br />
         </>
         :
@@ -44,20 +44,20 @@ const ChecklistItemShow = ({ updateChecklistItem, deleteChecklistItem, checklist
               />
             </form>
             <p style={complete ? {...styles.completed} : null}>{name}</p>
-          <Button 
+          <button 
             variant="info" 
             onClick={() => setEdit(true)}
             size="sm" 
           >
             Edit
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant="light"
             onClick={() => deleteChecklistItem(checklistId, id)}
             size="sm" 
           >
             Delete
-          </Button>
+          </button>
         </>
       }
     </>

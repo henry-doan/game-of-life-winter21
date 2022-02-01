@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Button, ListGroup } from 'react-bootstrap';
+// import { Button, ListGroup } from 'react-bootstrap';
 import { ChecklistConsumer } from '../../providers/ChecklistProvider';
 import ChecklistForm from './ChecklistForm';
 import ChecklistItems from '../checklistitems/ChecklistItems';
@@ -30,7 +30,7 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskI
             updateChecklist={updateChecklist}
             setEdit={setEdit}
           />
-          <Button variant="warning" onClick={() => setEdit(false)}>Cancel</Button>
+          <button variant="warning" onClick={() => setEdit(false)}>Cancel</button>
           <br />
         </>
         :
@@ -39,18 +39,18 @@ const ChecklistShow = ({ updateChecklist, deleteChecklist, checklistitems, taskI
           <h3>{name}</h3>
   
           <ChecklistItems checklistId={id} />   
-          <Button 
+          <button 
             variant="warning" 
             onClick={() => setEdit(true)}
           >
             Edit
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant="danger"
             onClick={() => deleteChecklist(taskId, id)}
           >
             Delete
-          </Button>
+          </button>
         </>
       }
     </>

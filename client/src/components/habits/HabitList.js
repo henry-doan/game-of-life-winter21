@@ -1,15 +1,15 @@
-import { ListGroup } from 'react-bootstrap';
+// import { ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Habit from './Habit';
 
 const HabitList = ({ habits }) => {
   return(
     <>
-      <ListGroup>
+      <div>
         { habits.map( h => 
          <Habit {...h} />
         )}
-      </ListGroup>
+      </div>
     </>
   )
 }

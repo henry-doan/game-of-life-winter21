@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+// import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Register = ({ handleRegister }) => {
   const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', name: '', image: '' })
@@ -17,13 +17,13 @@ const Register = ({ handleRegister }) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Container>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control 
+      <form onSubmit={handleSubmit}>
+        <container>
+          <row>
+            <col>
+              <div className="mb-3" controlId="formBasicEmail">
+                <label>Email address</label>
+                <input 
                   type="email"
                   autoFocus
                   name="email"
@@ -31,67 +31,67 @@ const Register = ({ handleRegister }) => {
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Name</Form.Label>
-                <Form.Control 
+              </div>
+            </col>
+          </row>
+          <row>
+            <col>
+              <div className="mb-3">
+                <label>Name</label>
+                <input
                   type="text"
                   name="name"
                   value={user.name}
                   onChange={(e) => setUser({ ...user, name: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
+              </div>
+            </col>
             
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Profile Image</Form.Label>
-                <Form.Control 
+            <col>
+              <div className="mb-3">
+                <label>Profile Image</label>
+                <input
                   type="text"
                   name="image"
                   value={user.image}
                   onChange={(e) => setUser({ ...user, image: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control 
+              </div>
+            </col>
+          </row>
+          <row>
+            <col>
+              <div className="mb-3" controlId="formBasicPassword">
+                <label>Password</label>
+                <input
                   type="password"
                   name="password"
                   value={user.password}
                   onChange={(e) => setUser({ ...user, password: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password Confirmation</Form.Label>
-                <Form.Control 
+              </div>
+            </col>
+            <col>
+              <div className="mb-3" controlId="formBasicPassword">
+                <label>Password Confirmation</label>
+                <input
                   type="password"
                   name="passwordConfirmation"
                   value={user.passwordConfirmation}
                   onChange={(e) => setUser({ ...user, passwordConfirmation: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-          </Row>
-        </Container>
-        <Button variant="primary" type="submit">
+              </div>
+            </col>
+          </row>
+        </container>
+        <button variant="primary" type="submit">
           Register
-        </Button>
-      </Form>
+        </button>
+      </form>
     </>
   )
 }

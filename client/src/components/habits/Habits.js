@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { HabitConsumer } from '../../providers/HabitProvider';
 import HabitList from './HabitList';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import HabitForm from './HabitForm';
 
 const Habits = ({ habits, getAllHabits, addHabit }) => {
@@ -17,10 +17,10 @@ const Habits = ({ habits, getAllHabits, addHabit }) => {
       { adding ?
           <>
             <HabitForm addHabit={addHabit} />
-            <Button variant="info" onClick={() => setAdding(false)}>Cancel</Button>
+            <button variant="info" onClick={() => setAdding(false)}>Cancel</button>
           </>
         :
-        <Button variant="info" onClick={() => setAdding(true)}>+</Button>
+        <button variant="info" onClick={() => setAdding(true)}>+</button>
       }
       <HabitList habits={habits} />
     </>

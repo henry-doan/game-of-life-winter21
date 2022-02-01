@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardList from './RewardList';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import RewardForm from './RewardForm';
 
 const Rewards = ({ rewards, getAllRewards, addReward }) => {
@@ -17,10 +17,10 @@ const Rewards = ({ rewards, getAllRewards, addReward }) => {
       { adding ?
           <>
             <RewardForm addReward={addReward} />
-            <Button variant="info" onClick={() => setAdding(false)}>Cancel</Button>
+            <button onClick={() => setAdding(false)}>Cancel</button>
           </>
         :
-        <Button variant="info" onClick={() => setAdding(true)}>+</Button>
+        <button onClick={() => setAdding(true)}>+</button>
       }
       <RewardList rewards={rewards} />
     </>

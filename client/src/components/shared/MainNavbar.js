@@ -1,62 +1,52 @@
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
-import { Navbar, Container, Nav } from 'react-bootstrap';
-
+// import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, NavItem, Icon, Button } from 'react-materialize';
 const MainNavbar = ({ user, handleLogout }) => {
 
   const rightNavItems = () => {
     if (user) {
       return (
         <>
-          <Nav.Link>
-            <Link to="/dashboard">
+        
+        <NavItem href="/dashboard">
               Dashboard
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/profile">
+            </NavItem>
+        <NavItem href="/profile">
               Profile
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/activities">
+            </NavItem>
+        <NavItem href="/activities">
               Activities
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/habits">
+            </NavItem>
+        <NavItem href="/habits">
               Habits
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/tasks">
+            </NavItem>
+        <NavItem href="/tasks">
               Tasks
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/rewards">
+            </NavItem>
+        <NavItem href="/rewards">
               Rewards
-            </Link>
-          </Nav.Link>
-          <p>Points: {user.points}</p>
-          <Nav.Link onClick={() => handleLogout()}>
+            </NavItem>
+        <p>Points: {user.points}</p>
+        <NavItem onClick={() => handleLogout()}>
             Logout
-          </Nav.Link>
+          </NavItem>
+          
         </>
       )
     } else {
       return (
         <>
-          <Nav.Link>
-            <Link to="/login">
-              Login
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/register">
-              Register
-            </Link>
-          </Nav.Link>
+        <Button> 
+          <Link to="/login">
+            Login
+          </Link>
+        </Button>
+        <Button> 
+          <Link to="/register">
+            Register 
+          </Link>
+        </Button>
         </>
       )
     }
@@ -64,18 +54,29 @@ const MainNavbar = ({ user, handleLogout }) => {
 
   return (
     <>
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand>
-            <Link to="/">
-              Game of Life
-            </Link>
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            { rightNavItems() }
-          </Nav>
-        </Container>
-      </Navbar>
+      <Navbar
+        alignLinks="right"
+        brand={<a className="brand-logo" href="/">Logo</a>}
+        centerChildren
+        id="mobile-nav"
+        menuIcon={<Icon>menu</Icon>}
+        options={{
+          draggable: true,
+          edge: 'left',
+          inDuration: 250,
+          onCloseEnd: null,
+          onCloseStart: null,
+          onOpenEnd: null,
+          onOpenStart: null,
+          outDuration: 200,
+          preventScrolling: true
+        }}
+      >
+          <NavItem href="/">
+               { rightNavItems() }
+              </NavItem>
+        </Navbar>
+      
     </>
   )
 }
