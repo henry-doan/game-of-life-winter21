@@ -3,7 +3,7 @@ import { AuthConsumer } from '../../providers/AuthProvider';
 // import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Register = ({ handleRegister }) => {
-  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', name: '', image: '' })
+  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', name: '', image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png' })
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,10 +18,8 @@ const Register = ({ handleRegister }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <container>
-          <row>
-            <col>
-              <div className="mb-3" controlId="formBasicEmail">
+        
+              <div>
                 <label>Email address</label>
                 <input 
                   type="email"
@@ -32,11 +30,8 @@ const Register = ({ handleRegister }) => {
                   required
                 />
               </div>
-            </col>
-          </row>
-          <row>
-            <col>
-              <div className="mb-3">
+          
+              <div>
                 <label>Name</label>
                 <input
                   type="text"
@@ -46,10 +41,8 @@ const Register = ({ handleRegister }) => {
                   required
                 />
               </div>
-            </col>
-            
-            <col>
-              <div className="mb-3">
+           
+              <div>
                 <label>Profile Image</label>
                 <input
                   type="text"
@@ -59,11 +52,8 @@ const Register = ({ handleRegister }) => {
                   required
                 />
               </div>
-            </col>
-          </row>
-          <row>
-            <col>
-              <div className="mb-3" controlId="formBasicPassword">
+            
+              <div>
                 <label>Password</label>
                 <input
                   type="password"
@@ -73,9 +63,8 @@ const Register = ({ handleRegister }) => {
                   required
                 />
               </div>
-            </col>
-            <col>
-              <div className="mb-3" controlId="formBasicPassword">
+            
+              <div>
                 <label>Password Confirmation</label>
                 <input
                   type="password"
@@ -85,13 +74,11 @@ const Register = ({ handleRegister }) => {
                   required
                 />
               </div>
-            </col>
-          </row>
-        </container>
-        <button variant="primary" type="submit">
-          Register
-        </button>
-      </form>
+           
+              <button>
+                Register
+              </button>
+            </form>
     </>
   )
 }

@@ -21,25 +21,19 @@ const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, ge
     return (
     <>
       <h1>Dashboard</h1>
-      <container>
-          <row>
-            <col>
+    
               <h3>Habits:</h3>
               <br />
               <HabitList habits={habits}/>
-            </col>
-            <col>
+           
               <h3>Tasks: </h3>
               <br />
               <TaskList tasks={tasks}/>
-            </col>
-            <col>
+            
               <h3>Rewards:</h3>
               <br />
               <RewardList rewards={rewards}/>
-            </col>
-          </row>
-      </container>
+            
     </>
 
   )

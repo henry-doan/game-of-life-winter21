@@ -28,23 +28,23 @@ const TaskShow = ({ updateTask, deleteTask, checklist }) => {
             {...task}
             updateTask={updateTask}
           />
-          <button variant="warning" onClick={() => setEdit(false)}>Cancel</button>
+          <button onClick={() => setEdit(false)}>Cancel</button>
           <br />
         </>
         :
         <>
         <br />
         {/* <Card style={{ width: '18rem' }}> */}
-        <div>
+        
           <h1>{title}</h1>
           <h3>Difficulty Level: {diff_levels}</h3>
           <p>
             {comment}
           </p>
-          <Link variant="warning" onClick={() => setEdit(true)}>Edit</Link>
-          <Link  variant="danger" onClick={() => deleteTask(id)}>Delete</Link>
+          <Link onClick={() => setEdit(true)}>Edit</Link>
+          <Link onClick={() => deleteTask(id)}>Delete</Link>
           <Checklists taskId={id} />
-          </div>
+          
 
 
           {/* <HeaderText fsize="large">Task: {title}</HeaderText>
@@ -69,27 +69,27 @@ const TaskShow = ({ updateTask, deleteTask, checklist }) => {
   )
 }
 
-const fontSize = (size) => {
-  switch(size) {
-    case 'large':
-      return '4rem';
-    case 'small':
-      return '1rem';
-    default:
-      return '2rem';
-  }
-}
+// const fontSize = (size) => {
+//   switch(size) {
+//     case 'large':
+//       return '4rem';
+//     case 'small':
+//       return '1rem';
+//     default:
+//       return '2rem';
+//   }
+// }
 
-const HeaderText = styled.h1`
-  color: green !important;
-  text-align: center;
-  font-size: ${props => fontSize(props.fSize)} !important;
-`
-const HeaderText2 = styled.h2`
-  color: black !important;
-  text-align: center;
-  font-size: ${props => fontSize(props.fSize)} !important;
-`
+// const HeaderText = styled.h1`
+//   color: green !important;
+//   text-align: center;
+//   font-size: ${props => fontSize(props.fSize)} !important;
+// `
+// const HeaderText2 = styled.h2`
+//   color: black !important;
+//   text-align: center;
+//   font-size: ${props => fontSize(props.fSize)} !important;
+// `
 
 
 const ConnectedTaskShow = (props) => (

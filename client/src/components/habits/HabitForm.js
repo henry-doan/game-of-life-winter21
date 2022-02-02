@@ -60,12 +60,12 @@ return (
     <label for="negative">-</label>
     </fieldset> */}
 
-      <div onClick={() => setHabit({ ...habit, add_option: !habit.add_option})}>
+      <button onClick={() => setHabit({ ...habit, add_option: !habit.add_option})}>
         +
-      </div>
-      <div onClick={() => setHabit({ ...habit, sub_option: !habit.sub_option})}>
+      </button>
+      <button onClick={() => setHabit({ ...habit, sub_option: !habit.sub_option})}>
         -
-      </div>  
+      </button>  
 
       <select id="dif_level" name="dif_level" 
       onChange={(e) => setHabit({ ...habit, dif_level: e.target.value})}> 

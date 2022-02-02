@@ -20,13 +20,11 @@ const profileView = () => {
   const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   return (
     <>
-      <col md="4">
-        <image src={ image || defaultImage } />
-      </col>
-      <col md="8">
+  
+        <img src={ image || defaultImage } />
         <h1>Name: {name}</h1>
         <h1>Email: {email}</h1>
-      </col>
+
     </>
   )
   }
@@ -40,7 +38,7 @@ const profileView = () => {
   const editView = () => {
     return(
       <form onSubmit={handleSubmit}>
-        <col md="4">
+   
         <div>
             <label>Image</label>
             <input 
@@ -51,8 +49,8 @@ const profileView = () => {
               onChange={(e) => setUser({...user, image: e.target.value })}
             />
           </div>
-        </col>
-        <col md="8">
+
+
           <div>
             <label>Name</label>
             <input 
@@ -74,25 +72,23 @@ const profileView = () => {
             />
           </div>
           <button type="submit">Update</button>
-        </col>
       </form>
     )
     }
   
   return (
     <>
-    <container>
+    <div>
         <h1>Profile</h1>
         <br />
-        <row>
+        
           { editing ? editView() : profileView() }
-          <col>
+          
             <button onClick={() => setEditing(!editing)}>
               { editing ? 'cancel' : 'edit' }
             </button>
-          </col>
-        </row>
-      </container>
+          
+      </div>
       </>
   )
 }

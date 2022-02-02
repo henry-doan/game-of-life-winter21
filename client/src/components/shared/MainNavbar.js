@@ -1,62 +1,50 @@
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
-// import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Navbar, NavItem, Icon, Button } from 'react-materialize';
-const MainNavbar = ({ user, handleLogout }) => {
+import { Navbar, NavItem, Icon } from 'react-materialize';
+// import M from "materialize-css/dist/js/materialize.min.js";
+import Logo from '../../images/Logo.png';
+import { GameNav, GameNavItemPrime, GameNavItemSecondary, NotificationIcon, NotificationItem, ImageItem, LinkImage } from "../../styles/shared";
 
-  const rightNavItems = () => {
-    if (user) {
-      return (
-        <>
-        
-        <NavItem href="/dashboard">
-              Dashboard
-            </NavItem>
-        <NavItem href="/profile">
-              Profile
-            </NavItem>
-        <NavItem href="/activities">
-              Activities
-            </NavItem>
-        <NavItem href="/habits">
-              Habits
-            </NavItem>
-        <NavItem href="/tasks">
-              Tasks
-            </NavItem>
-        <NavItem href="/rewards">
-              Rewards
-            </NavItem>
-        <p>Points: {user.points}</p>
-        <NavItem onClick={() => handleLogout()}>
-            Logout
-          </NavItem>
-          
-        </>
-      )
-    } else {
-      return (
-        <>
-        <Button> 
-          <Link to="/login">
-            Login
-          </Link>
-        </Button>
-        <Button> 
-          <Link to="/register">
-            Register 
-          </Link>
-        </Button>
-        </>
-      )
-    }
-  }
+const MainNavbar = ({ user, handleLogout, image}) => {
+  const publicLinks = [
+    <GameNavItemSecondary key={1} to="/register">
+      Sign Up
+    </GameNavItemSecondary>,
+    <GameNavItemPrime to="/login" key={2}>
+      Log In
+    </GameNavItemPrime>
+  ];
+
+  const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
+
+  const privateLinks = [
+    
+    <NotificationItem to="/activities">
+      <NotificationIcon>notifications_none</NotificationIcon>
+
+    </NotificationItem>
+    ,
+    <LinkImage to="/profile">
+        <ImageItem src={ user ? user.image : defaultImage} />
+    </LinkImage>
+    ,
+    <NavItem key={7} onClick={() => handleLogout()}>
+      Logout
+    </NavItem>
+  ];
 
   return (
     <>
-      <Navbar
+      <GameNav
         alignLinks="right"
-        brand={<a className="brand-logo" href="/">Logo</a>}
+        brand={
+          <Link to="/" className="brand-logo">
+            <img 
+              src={Logo}
+              height="80px"
+            />
+          </Link>
+        }
         centerChildren
         id="mobile-nav"
         menuIcon={<Icon>menu</Icon>}
@@ -72,11 +60,8 @@ const MainNavbar = ({ user, handleLogout }) => {
           preventScrolling: true
         }}
       >
-          <NavItem href="/">
-               { rightNavItems() }
-              </NavItem>
-        </Navbar>
-      
+        { user ? privateLinks : publicLinks }
+      </GameNav>
     </>
   )
 }
