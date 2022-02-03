@@ -2,30 +2,53 @@
 import { AuthConsumer } from '../../providers/AuthProvider';
 // import Moment from 'react-moment';
 import { useEffect, useState } from 'react';
-// import { form, row, col, Image, Container, button } from 'react-bootstrap';
+import { Row, Col, Card, Icon, CardTitle, Button } from 'react-materialize';
 import { useParams } from 'react-router';
+import { MainContainer, EditButton } from '../../styles/shared';
 
 
-const Profile = ({ name, email, image, id, updateUser }) => {
+const Profile = ({ name, email, image, password, id, note, updateUser }) => {
   const [editing, setEditing] = useState(false)
-  // const [formVals, setformValue] = useState({ name: '', email: '', image: '' })
-  const [user, setUser] = useState({ name: '', image: '', email: '' })
+  const [user, setUser] = useState({ name: '', image: '', email: '', note: '', })
 
   useEffect( () => {
-    // const { name, email, image } = user
-    setUser({ name, email, image })
+    setUser({ name, email, image, note })
   }, [])
 
 const profileView = () => {
   const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   return (
     <>
-  
-        <img src={ image || defaultImage } />
-        <h1>Name: {name}</h1>
-        <h1>Email: {email}</h1>
-
+      <Row>
+        <Col
+          m={6}
+          s={12}
+        >
+      <Card
+        closeIcon={<Icon>close</Icon>}
+        header={<CardTitle image={user ? user.image : defaultImage} reveal waves="light" style={{height: "700px", objectPosition: "center"}}/>}
+        reveal={
+          <>
+        <h5 style={{color: "blue"}}>"{note}"</h5>
+        <br />
+        <h5>User Info:</h5>
+        <p>Email: {email}</p>
+        </>
+        }
+        
+        revealIcon={<Icon>more_vert</Icon>}
+        title={name}
+      >
+      <p>
+                <a href="/activities">
+                  Activities Completed
+                </a>
+              </p>
+            </Card>
+          </Col>
+        </Row>
     </>
+   
   )
   }
 
@@ -37,8 +60,9 @@ const profileView = () => {
 
   const editView = () => {
     return(
+      
       <form onSubmit={handleSubmit}>
-   
+        
         <div>
             <label>Image</label>
             <input 
@@ -61,6 +85,17 @@ const profileView = () => {
               onChange={(e) => setUser({...user, name: e.target.value })}
             />
           </div>
+
+          <div>
+            <label>Description</label>
+            <input 
+              type="text" 
+              name="note"
+              value={user.note}
+              onChange={(e) => setUser({...user, note: e.target.value })}
+            />
+          </div>
+
           <div>
             <label>Email</label>
             <input 
@@ -71,25 +106,26 @@ const profileView = () => {
               onChange={(e) => setUser({...user, email: e.target.value })}
             />
           </div>
-          <button type="submit">Update</button>
+          <EditButton type="submit">Update</EditButton>
       </form>
+      
     )
     }
   
   return (
-    <>
+    <MainContainer>
     <div>
         <h1>Profile</h1>
         <br />
         
           { editing ? editView() : profileView() }
           
-            <button onClick={() => setEditing(!editing)}>
+            <EditButton onClick={() => setEditing(!editing)}>
               { editing ? 'cancel' : 'edit' }
-            </button>
+            </EditButton>
           
       </div>
-      </>
+      </MainContainer>
   )
 }
 

@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { EditButton } from '../../styles/shared';
 // import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Register = ({ handleRegister }) => {
-  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', name: '', image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png' })
+  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', name: '', image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png', note: '' })
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (user.password === user.passwordConfirmation) {
       handleRegister(user)
-      setUser({ email: '', password: '', passwordConfirmation: '', name: '', image: '' })
+      setUser({ email: '', password: '', passwordConfirmation: '', name: '', image: '', note: '' })
     } else {
       alert('Password do not match')
     }
@@ -52,6 +53,17 @@ const Register = ({ handleRegister }) => {
                   required
                 />
               </div>
+
+              <div>
+                <label>Description</label>
+                <input
+                  type="text"
+                  name="note"
+                  value={user.note}
+                  onChange={(e) => setUser({ ...user, note: e.target.value })}
+                  
+                />
+              </div>
             
               <div>
                 <label>Password</label>
@@ -75,9 +87,9 @@ const Register = ({ handleRegister }) => {
                 />
               </div>
            
-              <button>
+              <EditButton>
                 Register
-              </button>
+              </EditButton>
             </form>
     </>
   )

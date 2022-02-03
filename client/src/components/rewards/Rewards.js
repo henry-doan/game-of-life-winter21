@@ -3,6 +3,7 @@ import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardList from './RewardList';
 // import { Button } from 'react-bootstrap';
 import RewardForm from './RewardForm';
+import { MainContainer } from '../../styles/shared';
 
 const Rewards = ({ rewards, getAllRewards, addReward }) => {
   const [adding, setAdding] = useState(false)
@@ -12,7 +13,7 @@ const Rewards = ({ rewards, getAllRewards, addReward }) => {
   }, [])
 
   return (
-    <>
+    <MainContainer>
       <h1>All Rewards</h1>
       { adding ?
           <>
@@ -23,7 +24,7 @@ const Rewards = ({ rewards, getAllRewards, addReward }) => {
         <button onClick={() => setAdding(true)}>+</button>
       }
       <RewardList rewards={rewards} />
-    </>
+    </MainContainer>
   )
 }
 

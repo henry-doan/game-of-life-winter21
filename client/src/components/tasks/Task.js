@@ -1,8 +1,8 @@
 import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {Link} from 'react-router-dom';
-// import {ListGroup, Button} from 'react-bootstrap';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import {AuthConsumer} from '../../providers/AuthProvider';
+import { TaskContent, TaskCompleteBtn, TaskWrapper, MainContainer } from '../../styles/shared';
 
 const Task =({ user, id, title, complete, comment, diff_levels, tags, frequency, addActivity, updateTask, updatePoints }) =>{
 
@@ -28,17 +28,19 @@ const Task =({ user, id, title, complete, comment, diff_levels, tags, frequency,
 
   return(
     <>
+    <TaskWrapper>
     { !complete ? 
-      <button 
+      <TaskCompleteBtn
         onClick={()=> plusActivity(title, diff_levels)}
 
-      >+</button>
+      ></TaskCompleteBtn>
       : null
     }
-      <Link to={`/tasks/${id}`}>
-        <p>{title}</p>
-      </Link>
-    <br />
+        <TaskContent style={{textDecoration: "none", color: "black"}} to={`/tasks/${id}`}>
+          <p style={{fontWeight: "bold", color: "#4a4a4a", marginTop: "25px"}}>{title}</p>
+        </TaskContent>
+      <br />
+    </TaskWrapper>
     </>
   )
 }

@@ -32,7 +32,7 @@ const RewardProvider = ({ children }) => {
             return r
         })
         setRewards(newUpdatedRewards)
-        navigate('/rewards')
+        navigate('/dashboard')
       })
       .catch( err => console.log(err))
   }

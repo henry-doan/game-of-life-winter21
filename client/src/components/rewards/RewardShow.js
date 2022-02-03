@@ -6,6 +6,8 @@ import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
 import { ActivityConsumer } from '../../providers/ActivityProvider';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { Modal, Button, Row, Col, Card, Icon } from 'react-materialize';
+import { MainContainer } from '../../styles/shared';
 
 const RewardShow = ({ updateReward, deleteReward, addActivity, updatePoints, user }) => {
   const params = useParams();
@@ -33,41 +35,69 @@ const RewardShow = ({ updateReward, deleteReward, addActivity, updatePoints, use
 
   const { award, points, notes, tags, id } = reward
   return (
-    <>
-      { editing ? 
-        <>
-          <RewardForm 
-            {...reward}
-            updateReward={updateReward}
-          />
-          <button onClick={() => setEdit(false)}>Cancel</button>
-          <br />
-        </>
-        :
-        <>
-          <h1>Id: {params.rewardId} {award}</h1>
-          <h3>Points: {points}</h3>
-          <h5>Notes: {notes}
-          </h5>
-          <h5>Tags: {tags}</h5>
-          <button 
-            onClick={() => setEdit(true)}
-          >
-            Edit
-          </button>
-          <button 
-            onClick={() => deleteReward(id)}
-          >
-            Delete
-          </button>
-          <button 
-            onClick={() => addRewardActivity(award, points)}
-          >
-            Redeem
-          </button>
-        </>
-      }
-    </>
+        <MainContainer>
+          <Row>
+            <Col
+              m={6}
+              s={12}
+            >
+              <Card
+                actions={[
+                  <a key="1" href="#">
+                    <Modal
+                      actions={[
+                        <Button flat modal="close" node="button" waves="green">Cancel</Button>
+                      ]}
+                      bottomSheet={false}
+                      fixedFooter={false}
+                      header="Edit Reward"
+                      id="Modal-10"
+                      open={false}
+                      options={{
+                        dismissible: true,
+                        endingTop: '10%',
+                        inDuration: 250,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        opacity: 0.5,
+                        outDuration: 250,
+                        preventScrolling: true,
+                        startingTop: '4%'
+                      }}
+                      trigger={<Button node="button">Edit</Button>}
+                    >
+                      <RewardForm {...reward} updateReward={updateReward}/>  
+                    </Modal>
+                    </a>,
+                  <a key="2" href="#">
+                    <Button 
+                      variant="danger"
+                      onClick={() => deleteReward(id)}
+                    >
+                      Delete
+                    </Button>            
+                    </a>
+                ]}
+                // className="blue-grey darken-1"
+                
+                closeIcon={<Icon>close</Icon>}
+                revealIcon={<Icon>more_vert</Icon>}
+                // textClassName="white-text"
+                title={award}
+              >
+              <h5>Points: {points}</h5>
+              <h5>{notes}</h5>
+              <h5>Tags: {tags}</h5>
+              </Card>
+            </Col>
+          </Row>
+
+          
+          
+      
+    </MainContainer>
   )
 }
 

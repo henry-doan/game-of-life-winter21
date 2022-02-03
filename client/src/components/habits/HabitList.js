@@ -1,15 +1,15 @@
-import { Collection } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import Habit from './Habit';
 import { Button, Modal } from 'react-materialize';
 import HabitForm from './HabitForm';
 import { HabitConsumer } from '../../providers/HabitProvider';
-// import M from "materialize-css/dist/js/materialize.min.js";
+import { HabitContainer } from '../../styles/shared'
 
 const HabitList = ({ habits, addHabit }) => {
   return(
     <>
-      <Collection>
+      <HabitContainer>
+      <p style={{fontSize: "18px", margin: "-2px 0px 12px 0px", color: "grey", fontWeight: "900"}}>Habits</p>
         { habits.map( h => 
          <Habit {...h} />
         )}
@@ -38,7 +38,7 @@ const HabitList = ({ habits, addHabit }) => {
         >
           <HabitForm addHabit={addHabit} />
         </Modal>
-      </Collection>
+        </HabitContainer>
     </>
   )
 }

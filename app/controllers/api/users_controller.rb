@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
       user.name = params[:name] ? params[:name] : user.name 
       user.email = params[:email] ? params[:email] : user.email
       user.image = params[:image] ? params[:image] : user.image
+      user.note = params[:note] ? params[:note] : user.note
       # user.points = params[:points] ? params[:points] : user.points
       # user.levels = params[:levels] ? params[:levels] : user.levels
       if user.save 

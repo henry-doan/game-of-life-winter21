@@ -8,6 +8,8 @@ import { HabitConsumer,  } from '../../providers/HabitProvider';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import { RewardConsumer } from '../../providers/RewardProvider';
 // import { Col, Row, Container } from 'react-bootstrap';
+import { Col, Row } from 'react-materialize';
+import { DashboardCol, MainContainer } from '../../styles/shared';
 
 const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, getAllRewards}) => {
 
@@ -19,22 +21,26 @@ const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, ge
 
   if (user) { 
     return (
-    <>
+      <MainContainer>
       <h1>Dashboard</h1>
-    
-              <h3>Habits:</h3>
-              <br />
-              <HabitList habits={habits}/>
-           
-              <h3>Tasks: </h3>
-              <br />
-              <TaskList tasks={tasks}/>
-            
-              <h3>Rewards:</h3>
-              <br />
-              <RewardList rewards={rewards}/>
-            
-    </>
+      <Row>
+          <DashboardCol>
+            <h3>Habits:</h3>
+            <br />
+            <HabitList habits={habits}/>
+          </DashboardCol>
+          <DashboardCol>
+            <h3>Tasks: </h3>
+            <br />
+            <TaskList tasks={tasks}/>
+          </DashboardCol>
+          <DashboardCol>
+            <h3>Rewards:</h3>
+            <br />
+            <RewardList rewards={rewards}/>
+          </DashboardCol>
+        </Row>
+        </MainContainer>
 
   )
     } else {

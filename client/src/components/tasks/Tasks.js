@@ -3,6 +3,7 @@ import { TaskConsumer } from '../../providers/TaskProvider';
 import TaskList from './TaskList';
 // import { Button } from 'react-bootstrap';
 import TaskForm from './TaskForm';
+import { MainContainer } from '../../styles/shared';
 
 const Tasks = ({ tasks, getAllTasks, addTask }) => {
   const [adding, setAdding] = useState(false)
@@ -12,7 +13,7 @@ const Tasks = ({ tasks, getAllTasks, addTask }) => {
   }, [])
 
   return (
-    <>
+    <MainContainer>
       <h1>All Tasks</h1>
       { adding ?
           <>
@@ -23,7 +24,7 @@ const Tasks = ({ tasks, getAllTasks, addTask }) => {
         <button onClick={() => setAdding(true)}>+</button>
       }
       <TaskList tasks={tasks} />
-    </>
+    </MainContainer>
   )
 }
 

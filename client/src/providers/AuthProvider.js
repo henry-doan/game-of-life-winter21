@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     axios.post('/api/auth', user)
       .then( res => {
         setUser(res.data.data)
-        navigate('/')
+        navigate('/dashboard')
       })
       .catch( err => console.log(err) )
   }
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
     axios.post("/api/auth/sign_in", user)
     .then( res => {
       setUser(res.data.data)
-      navigate('/')
+      navigate('/dashboard')
     })
     .catch( err => console.log(err) )
   }
@@ -42,6 +42,7 @@ const AuthProvider = ({ children }) => {
     data.append('image', user.image);
     data.append('name', user.name);
     data.append('email', user.email);
+    data.append('note', user.note);
     // data.append('levels', user.levels);
     // data.append('points', user.points);
     // data.append('password', user.password);

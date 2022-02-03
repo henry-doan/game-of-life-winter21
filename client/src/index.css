@@ -2,13 +2,15 @@ body {
   margin: 0;
   margin-bottom: 70px;
   font-family: 'Poppins', sans-serif;
+  background: lightgrey;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-.sidenav{ 
-  margin-top: 80px !important;
+.sidenav .user-view .circle {
+  margin-top: 60px;
 }

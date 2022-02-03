@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/shared/Home';
 import Nomatch from './components/shared/Nomatch';
+// import { Container } from 'react-bootstrap';
+import M from 'materialize-css';
 import MainNavbar from './components/shared/MainNavbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -16,8 +18,9 @@ import HabitShow from './components/habits/HabitShow';
 import Dashboard from './components/shared/Dashboard';
 import Activities from './components/activities/Activities';
 import ActivityShow from './components/activities/ActivityShow';
+import Footer from './components/shared/Footer';
+import About from './components/shared/About';
 import Sidebar from './components/shared/Sidebar';
-import { MainContainer } from './styles/shared';
 
 const App = () => (
   <>
@@ -26,12 +29,11 @@ const App = () => (
     <FetchUser>
       {/* <Container> */}
       {/* <div class="container"> */}
-        <MainContainer>
+        <>
           <Routes>
             <Route path='/' element={<Home />} />
-            
+            <Route path='/About' element={<About />} />
             <Route path='/' element={<ProtectedRoute />}>
-             
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/rewards' element={<Rewards />} />
@@ -42,18 +44,17 @@ const App = () => (
               <Route path='/habits/:habitId' element={<HabitShow />} />
               <Route path='/activities' element={<Activities />} />
               <Route path='/activities/:activityId' element={<ActivityShow />} />
-              
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
 
             <Route path='/*' element={<Nomatch />} />
           </Routes>
-        </MainContainer>
+        </>
       {/* </Container> */}
       {/* </div> */}
     </FetchUser>
-    
+    <Footer />
   </>
 )
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, NavItem, Icon } from 'react-materialize';
 // import M from "materialize-css/dist/js/materialize.min.js";
 import Logo from '../../images/Logo.png';
-import { GameNav, GameNavItemPrime, GameNavItemSecondary, NotificationIcon, NotificationItem, ImageItem, LinkImage } from "../../styles/shared";
+import { GameNav, GameNavImg, GameNavItemPrime, GameNavItemSecondary, NotificationIcon, NotificationItem, ImageItem, LinkImage } from "../../styles/shared";
 
 const MainNavbar = ({ user, handleLogout, image}) => {
   const publicLinks = [
@@ -28,9 +28,9 @@ const MainNavbar = ({ user, handleLogout, image}) => {
         <ImageItem src={ user ? user.image : defaultImage} />
     </LinkImage>
     ,
-    <NavItem key={7} onClick={() => handleLogout()}>
-      Logout
-    </NavItem>
+    // <NavItem key={7} onClick={() => handleLogout()}>
+    //   Logout
+    // </NavItem>
   ];
 
   return (
@@ -38,14 +38,14 @@ const MainNavbar = ({ user, handleLogout, image}) => {
       <GameNav
         alignLinks="right"
         brand={
-          <Link to="/" className="brand-logo">
-            <img 
+          <Link to={user ? "/dashboard" : "/"} className="brand-logo">
+            <GameNavImg 
               src={Logo}
-              height="80px"
+              height="70px"
             />
           </Link>
         }
-        centerChildren
+        
         id="mobile-nav"
         menuIcon={<Icon>menu</Icon>}
         options={{
