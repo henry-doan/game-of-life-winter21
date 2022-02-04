@@ -7,8 +7,8 @@ import TaskForm from './TaskForm';
 import Checklists from '../checklists/Checklists';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Modal, Button} from 'react-materialize'
-import { MainContainer } from '../../styles/shared';
+import { Modal, Button, Row, Col, Card, Icon} from 'react-materialize'
+import { MainContainer, TaskModal, InputSlot } from '../../styles/shared';
 
 const TaskShow = ({ updateTask, deleteTask, checklist }) => {
   const params = useParams();
@@ -23,45 +23,68 @@ const TaskShow = ({ updateTask, deleteTask, checklist }) => {
 
   const { title, comment, diff_levels, tags, frequency, id } = task
   return (
-        <MainContainer>
-          <h1>{title}</h1>
-          <h3>Difficulty Level: {diff_levels}</h3>
-          <p>
-            {comment}
-          </p>
-          <Modal
-        actions={[
-          <Button flat modal="close" node="button" waves="green">Cancel</Button>
-        ]}
-        bottomSheet={false}
-        fixedFooter={false}
-        header="Edit Task"
-        id="Modal-10"
-        open={false}
-        options={{
-          dismissible: true,
-          endingTop: '10%',
-          inDuration: 250,
-          onCloseEnd: null,
-          onCloseStart: null,
-          onOpenEnd: null,
-          onOpenStart: null,
-          opacity: 0.5,
-          outDuration: 250,
-          preventScrolling: true,
-          startingTop: '4%'
-        }}
-        trigger={<Button node="button">Edit</Button>}
+    <MainContainer>
+    <Row>
+      <Col
+        // m={6}
+        // s={12}
       >
-        <TaskForm {...task} updateTask={updateTask}/>  
-      </Modal>
-      <Button 
-        variant="danger"
-        onClick={() => deleteTask(id)}
-      >
-        Delete
-      </Button>
-    </MainContainer>
+        <Card style={{ background: "#F8f8f8", borderRadius: "20px", width: "500px", height: "400px", margin: "10% 50% 50% 50%"}}
+          actions={[
+            <a key="1" href="#">
+              <TaskModal
+                actions={[
+                  <Button flat modal="close" node="button" waves="green">Cancel</Button>
+                ]}
+                bottomSheet={false}
+                fixedFooter={false}
+                header="Edit Task"
+                id="Modal-10"
+                open={false}
+                options={{
+                  dismissible: true,
+                  endingTop: '10%',
+                  inDuration: 250,
+                  onCloseEnd: null,
+                  onCloseStart: null,
+                  onOpenEnd: null,
+                  onOpenStart: null,
+                  opacity: 0.5,
+                  outDuration: 250,
+                  preventScrolling: true,
+                  startingTop: '4%'
+                }}
+                trigger={<Button style={{border: "1px #f1f1f1 solid", borderRadius: "2px", color: "black", background: "white", boxShadow: "none", width: "120px"}} node="button">Edit</Button>}
+              >
+                <TaskForm {...task} updateTask={updateTask}/>  
+              </TaskModal>
+              </a>,
+            <a key="2" href="#">
+              <Button style={{ width: "120px", border: "1px #f1f1f1 solid", borderRadius: "2px", color: "black", background: "white", boxShadow: "none"}}
+                variant="danger"
+                onClick={() => deleteTask(id)}
+              >
+                Delete
+              </Button>            
+              </a>
+          ]}
+          // className="blue-grey darken-1"
+          
+          closeIcon={<Icon>close</Icon>}
+          revealIcon={<Icon>more_vert</Icon>}
+          // textClassName="white-text"
+          title={title}
+        >
+        <h5>{title}</h5>
+        <h5>Tags: {tags}</h5>
+        </Card>
+      </Col>
+    </Row>
+
+    
+    
+
+</MainContainer>
   )
 }
 
@@ -95,7 +118,6 @@ const ConnectedTaskShow = (props) => (
 )
 
 export default ConnectedTaskShow;
-
 
 
 

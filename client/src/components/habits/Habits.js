@@ -13,7 +13,6 @@ const Habits = ({ habits, getAllHabits, addHabit }) => {
   }, [])
 
   return (
-
     <MainContainer>
       <h1>All Habits</h1>
       { adding ?
@@ -25,7 +24,7 @@ const Habits = ({ habits, getAllHabits, addHabit }) => {
         <button variant="info" onClick={() => setAdding(true)}>+</button>
       }
       <HabitList habits={habits} />
-      </MainContainer>
+    </MainContainer>
   )
 }
 

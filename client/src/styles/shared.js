@@ -62,13 +62,13 @@ export const LinkImage = styled(Link)`
 export const MainContainer = styled.div`
   margin-left: 400px;
 `
-export const DashboardCol = styled(Col)`
-  border-radius: 50px;
-  border: .1em solid grey;
-  padding: 20px; 
-  margin: 30px;
-  width: 25%;
-`
+// export const DashboardCol = styled(Col)`
+//   border-radius: 50px;
+//   border: .1em solid grey;
+//   padding: 20px; 
+//   margin: 30px;
+//   width: 25%;
+// `
 
 //chris's
 
@@ -127,7 +127,7 @@ export const HabitMinusBtn = styled(Button)`
   background: #FC5A5A;
   border-radius: 20px 0 0 20px;
   &:hover {
-    background: #F55858;
+    background: #F05656;
   }
 `
 export const HabitPlusBtn = styled(Button)`
@@ -146,20 +146,23 @@ export const HabitContent = styled(Link)`
   height: 140px;
   padding: 10px 30px 0px 30px;
   border: 2.6px #FAFAFA solid;
+  border: 1px #F7F7F7 solid;
+  background: #FFFFFF;
 `
 
 export const HabitContainer = styled.div`
   padding: 15px;
   border: 2.6px #F5F5F5 solid;
-  border-radius: 20px;
-  background: #FCFFFF;
+  border-bottom: none;
+  border-radius: 20px 20px 20px 20px;
+  background: #FAFAFB;
   width: 20.8rem;
 `
 export const TaskContainer = styled.div`
-  padding: 15px;
-  border: 2.6px #F5F5F5 solid;
-  border-radius: 20px;
-  background: #FCFFFF;
+  padding: 15px 7px 2px 7px;
+  border: 1px #EBEBEB solid;
+  border-radius: 20px 20px 0px 0px;
+  background: #FAFAFB;
   width: 20.8rem;
 `
 export const TaskWrapper = styled.div`
@@ -175,7 +178,7 @@ export const TaskCompleteBtn = styled(Button)`
   background: #FC5A5A;
   border-radius: 20px 0 0 20px;
   &:hover {
-  background: #F55858;
+    background: #F05656;
   }
 `
 
@@ -187,13 +190,15 @@ export const TaskContent = styled(Link)`
   border: 2.6px #FAFAFA solid;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background: #FFFFFF;
 `
 
 export const RewardContainer = styled.div`
-  padding: 15px;
-  border: 2.6px #F5F5F5 solid;
-  border-radius: 20px;
-  background: #FCFFFF;
+  padding: 15px 7px 2px 7px;  
+  border: 1px #EBEBEB solid;
+  border-radius: 20px 20px 0px 0px;
+  background: #FAFAFB;
   width: 20.8rem;
 `
 export const RewardWrapper = styled.div`
@@ -218,6 +223,7 @@ export const RewardContent = styled(Link)`
   padding: 10px 30px 0px 30px;
   border: 2.6px #FAFAFA solid;
   border-radius: 20px 0px 0px 20px;
+  background: #FFFFFF;
 `
 export const RewardItem = styled.div`
   flex-grow: 1;
@@ -231,8 +237,39 @@ export const RewardModal = styled(Modal)`
   background: #d2adb7;
   color: #fff;
   border-radius: 25px;
-
 `
+export const TaskModalBtn = styled(Button)`
+  background: #FFFFFF;
+  color: #92929D;
+  border-color: #E2E2EA;
+  box-shadow: none;
+  width: 20.8rem;
+  font-size: 35px;
+  font-weight: 200;
+  border: 1px #EBEBEB solid;
+  border-radius: 0px 0px 20px 20px;
+  margin: -5px 0px 0px 0px;
+  &:hover {
+    background: #FAFAFA;
+    box-shadow: none;
+  }
+`
+export const RewardModalBtn = styled(Button)`
+  background: #FFFFFF;
+  color: #92929D;
+  border-color: #E2E2EA;
+  box-shadow: none;
+  width: 20.8rem;
+  font-size: 35px;
+  font-weight: 200;
+  border: 1px #EBEBEB solid;
+  border-radius: 0px 0px 20px 20px;
+  margin: -5px 0px 0px 0px;
+  &:hover {
+    background: #FAFAFA;
+    box-shadow: none;
+`
+
 export const RewardModalChild = styled.form`
   background: #fff;
 `
@@ -241,9 +278,18 @@ export const RewardFormStyle = styled.form`
   color: #000;
   
 `
+export const AddSub = styled.p`
+  background: #000;
+  font: #fff;
+  border: normal;
+  display: block;
+  margin: 20px 160px 20px 160px;
+  text-align: center !important;
+  cursor: pointer;
+`
 
 export const RewardLabel = styled.label`
-  color: #fff;
+  color: #fff !important;
   font-weight: bold;
   font-size: 16px;
 `
@@ -261,17 +307,61 @@ export const RewardButton = styled(Button)`
 export const RewardCoinImg = styled.img`
     height: 25px;
 `
+
+export const BlackLabel = styled.label`
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+`
+
+export const TaskModal = styled(Modal)`
+  background: #9ee9cb;
+  color: #000 !important;
+  border-radius: 25px !important;
+  max-width: 100%;
+
+`
+export const TaskModalChild = styled.form`
+  background: #fff;
+`
+
+export const HabitModal = styled(Modal)`
+  background: #95abe1;
+  color: #fff;
+  border-radius: 25px !important;
+`
+export const HabitModalBtn = styled(Button)`
+background: #FFFFFF;
+color: #92929D;
+border-color: #E2E2EA;
+box-shadow: none;
+width: 20.8rem;
+font-size: 35px;
+font-weight: 200;
+border: 1px #EBEBEB solid;
+border-radius: 0px 0px 20px 20px;
+margin: -5px 0px 0px 0px;
+&:hover {
+  background: #FAFAFA;
+  box-shadow: none;
+}
+`
+
 export const LoginContainer = styled.div`
-  margin: auto;
   width: 800px;
-  padding: 90px;
+  padding: 110px;
   border: 2.6px #F5F5F5 solid;
   border-radius: 20px;
   background: #FCFFFF;
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  margin: 0 auto;
 `
 export const HomeHeader = styled.header`
   text-align: center;
   display: block;
+  margin-bottom: 400px;
 `
 export const ImageText = styled.div`
   text-align: center;
@@ -279,4 +369,5 @@ export const ImageText = styled.div`
   top: 50%;
   left: 25%;
   margin: 0 auto;
-  `
+  color: white;
+`

@@ -26,7 +26,7 @@ const profileView = () => {
         >
       <Card
         closeIcon={<Icon>close</Icon>}
-        header={<CardTitle image={user ? user.image : defaultImage} reveal waves="light" style={{height: "700px", objectPosition: "center"}}/>}
+        header={<CardTitle image={user ? user.image : defaultImage} reveal waves="light" style={{height: "400px", objectPosition: "center"}}/>}
         reveal={
           <>
         <h5 style={{color: "blue"}}>"{note}"</h5>

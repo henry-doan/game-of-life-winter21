@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import Task from './Task';
-import { Button, Modal } from 'react-materialize';
+import { Button, Modal, Collection } from 'react-materialize';
 import TaskForm from './TaskForm';
 import { TaskConsumer } from '../../providers/TaskProvider';
-import { TaskContainer } from '../../styles/shared'
+import { TaskContainer, TaskModal, TaskModalBtn } from '../../styles/shared'
 
 const TaskList = ({ tasks, addTask }) => {
   return(
@@ -13,13 +13,14 @@ const TaskList = ({ tasks, addTask }) => {
         { tasks.map( t => 
          <Task {...t} />
         )}
-        <Modal
+        </TaskContainer>
+        <TaskModal
           actions={[
             <Button flat modal="close" node="button" waves="green">Cancel</Button>
           ]}
           bottomSheet={false}
           fixedFooter={false}
-          header="Add Task"
+          header="Edit To Do"
           open={false}
           options={{
             dismissible: true,
@@ -34,11 +35,11 @@ const TaskList = ({ tasks, addTask }) => {
             preventScrolling: true,
             startingTop: '4%'
           }}
-          trigger={<Button node="button">+</Button>}
+          trigger={<TaskModalBtn node="button">+</TaskModalBtn>}
         >
           <TaskForm addTask={addTask} />
-        </Modal>
-      </TaskContainer>
+
+        </TaskModal>
     </>
   )
 }

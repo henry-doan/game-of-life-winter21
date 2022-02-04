@@ -1,7 +1,7 @@
 import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {Link} from 'react-router-dom';
 import {AuthConsumer} from '../../providers/AuthProvider';
-import { HabitWrapper, HabitMinusBtn, HabitPlusBtn, HabitContent, MainContainer, } from '../../styles/shared';
+import { HabitWrapper, HabitMinusBtn, HabitPlusBtn, HabitContent, } from '../../styles/shared';
 
 const Habit =({ id, title, notes, add_option, sub_option, addActivity, dif_level, user, updatePoints }) =>{
 
@@ -33,6 +33,7 @@ const Habit =({ id, title, notes, add_option, sub_option, addActivity, dif_level
   }
 
   return(
+    <>
     <HabitWrapper>
     { sub_option ? 
       <HabitMinusBtn 
@@ -51,6 +52,7 @@ const Habit =({ id, title, notes, add_option, sub_option, addActivity, dif_level
     }
     <br />
    </HabitWrapper>
+   </>
   )
 }
 

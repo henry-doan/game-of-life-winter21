@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { BlackLabel, InputSlot, RewardButton, AddSub } from '../../styles/shared';
+import { Select } from 'react-materialize';
 
 const HabitForm = ({ id, title, notes, add_option, sub_option, dif_level, tags, frequency, updateHabit, addHabit}) => {
   const [habit, setHabit ] = useState({ title: '', notes: '', add_option: false, sub_option: false, dif_level: 'Easy', tags: '', frequency: 'Daily'})
@@ -24,58 +26,73 @@ const handleSubmit = (e) => {
 return (
   <>
     <form onSubmit={handleSubmit}>
-      <label>Habit:</label>
-      <input 
+      <BlackLabel>Habit:</BlackLabel>
+      <InputSlot 
         type="text"
         name="title"
         value={habit.title}
         onChange={(e) => setHabit({ ...habit, title: e.target.value})}
         required
       />
-      <label>Note:</label>
-      <input 
+      <BlackLabel>Note:</BlackLabel>
+      <InputSlot 
         type="text"
         name="notes"
         value={habit.notes}
         onChange={(e) => setHabit({ ...habit, notes: e.target.value})}
         required
       />
-      {/* <fieldset>
-      <input
-        type="radio"
-        id="positive"
-        name="add_sub"
-        value={habit.add_sub}
-        onChange={(e) => setHabit({ ...habit, add_sub: e.target.value})}
-        selected
-     />
-    <label for="positive">+</label>
-     <input
-        type="radio"
-        id="negative"
-        name="add_sub"
-        value={habit.add_sub}
-        onChange={(e) => setHabit({ ...habit, add_sub: e.target.value})}
-     />
-    <label for="negative">-</label>
-    </fieldset> */}
-
-      <button onClick={() => setHabit({ ...habit, add_option: !habit.add_option})}>
+      <AddSub onClick={() => setHabit({ ...habit, add_option: !habit.add_option})}>
         +
-      </button>
-      <button onClick={() => setHabit({ ...habit, sub_option: !habit.sub_option})}>
+      </AddSub>
+      <AddSub onClick={() => setHabit({ ...habit, sub_option: !habit.sub_option})}>
         -
-      </button>  
+      </AddSub>  
+      <br />
+      <BlackLabel>Difficulty Level</BlackLabel>
+      <Select
+        id="diff_levels"
+        multiple={false}
+        onChange={(e) => setHabit({ ...habit, diff_levels: e.target.value})}
+        options={{
+          classes: '',
+          dropdownOptions: {
+            alignment: 'left',
+            autoTrigger: true,
+            closeOnClick: true,
+            constrainWidth: true,
+            coverTrigger: true,
+            hover: false,
+            inDuration: 150,
+            onCloseEnd: null,
+            onCloseStart: null,
+            onOpenEnd: null,
+            onOpenStart: null,
+            outDuration: 250
+          }
+        }}
+        value=""
+      >
+        <option
+          disabled
+          value=""
+        >
+          Choose your option
+        </option>
+        <option value="Easy">
+          Easy
+        </option>
+        <option value="Medium">
+          Medium
+        </option>
+        <option value="Difficult">
+          Difficult
+        </option>
+      </Select>
 
-      <select id="dif_level" name="dif_level" 
-      onChange={(e) => setHabit({ ...habit, dif_level: e.target.value})}> 
-        <option value='Easy' selected>Easy</option>
-        <option value='Medium'>Medium</option>
-        <option value='Difficult'>Difficult</option>
-      </select>
 
-      <label>Tags</label>
-      <input
+      <BlackLabel>Tags</BlackLabel>
+      <InputSlot
         type="text"
         id="tags"
         name="tags"
@@ -83,15 +100,52 @@ return (
         onChange={(e) => setHabit({ ...habit, tags: e.target.value})}
         />
 
-      <label>Reset Counter</label>
-      <select id="frequency" name="frequency" 
-      onChange={(e) => setHabit({ ...habit, frequency: e.target.value})}> 
-        <option value='Daily' selected >Daily</option>
-        <option value='Weekly'>Weekly</option>
-        <option value='Monthly'>Monthly</option>
-        <option value='Annually'>Annually</option>
-      </select> 
-      <button type="submit">Submit</button>
+      <BlackLabel>Reset Counter</BlackLabel>
+      
+      <Select
+        id="frequency"
+        multiple={false}
+        onChange={(e) => setHabit({ ...habit, frequency: e.target.value})}
+        options={{
+          classes: '',
+          dropdownOptions: {
+            alignment: 'left',
+            autoTrigger: true,
+            closeOnClick: true,
+            constrainWidth: true,
+            coverTrigger: true,
+            hover: false,
+            inDuration: 150,
+            onCloseEnd: null,
+            onCloseStart: null,
+            onOpenEnd: null,
+            onOpenStart: null,
+            outDuration: 250
+          }
+        }}
+        value=""
+      >
+        <option
+          disabled
+          value=""
+        >
+          Choose your option
+        </option>
+        <option value="Daily">
+          Daily
+        </option>
+        <option value="Weekly">
+          Weekly
+        </option>
+        <option value="Monthly">
+          Monthly
+        </option>
+        <option value="Annually">
+          Annually
+        </option>
+      </Select>
+
+      <RewardButton type="submit">Submit</RewardButton>
 
     </form>
 

@@ -4,12 +4,11 @@ import RewardList from '../rewards/RewardList';
 import Home from './Home';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { useEffect } from 'react';
-import { HabitConsumer,  } from '../../providers/HabitProvider';
+import { HabitConsumer  } from '../../providers/HabitProvider';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import { RewardConsumer } from '../../providers/RewardProvider';
-// import { Col, Row, Container } from 'react-bootstrap';
-import { Col, Row } from 'react-materialize';
-import { DashboardCol, MainContainer } from '../../styles/shared';
+import { Col, Row, Container } from 'react-materialize';
+import { MainContainer } from '../../styles/shared';
 
 const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, getAllRewards}) => {
 
@@ -21,26 +20,23 @@ const Dashboard = ({ user, habits, tasks, rewards, getAllHabits, getAllTasks, ge
 
   if (user) { 
     return (
-      <MainContainer>
-      <h1>Dashboard</h1>
-      <Row>
-          <DashboardCol>
-            <h3>Habits:</h3>
+    <MainContainer>
+      <h1 style={{fontSize: "30px", fontWeight: "800", textAlign: "left", paddingLeft: "390px"}}>Dashboard</h1>
+          <Row>
+            <Col>
             <br />
-            <HabitList habits={habits}/>
-          </DashboardCol>
-          <DashboardCol>
-            <h3>Tasks: </h3>
+              <HabitList habits={habits}/>
+            </Col>
+            <Col>
             <br />
-            <TaskList tasks={tasks}/>
-          </DashboardCol>
-          <DashboardCol>
-            <h3>Rewards:</h3>
+              <TaskList tasks={tasks}/>
+            </Col>
+            <Col>
             <br />
-            <RewardList rewards={rewards}/>
-          </DashboardCol>
-        </Row>
-        </MainContainer>
+              <RewardList rewards={rewards}/>
+            </Col>
+          </Row>
+    </MainContainer>
 
   )
     } else {

@@ -1,10 +1,9 @@
-// import HabitShow from '../habits/HabitShow';
-// import TaskShow from '../tasks/TaskShow';
-// import RewardShow from '../rewards/RewardShow';
+
 import { useState, useEffect } from 'react';
 import {ActivityConsumer} from '../../providers/ActivityProvider';
 import { MainContainer } from '../../styles/shared';
 import {Table} from 'react-materialize';
+import Moment from 'react-moment';
 
 const Activities = ({ activities, created_at, id, getAllActivities }) => {
   const [adding, setAdding] = useState(false)
@@ -44,23 +43,15 @@ const Activities = ({ activities, created_at, id, getAllActivities }) => {
                 {a.title}
                 </td>
               <td>
-                {a.created_at} 
+              <Moment format='MMMM Do YYYY, h:mm a'>
+              {a.created_at} 
+              </Moment>
               </td>
             </tr>
             </tbody>
             )
         }
        </Table>
-      
-      {/* <div>
-        {
-          activities.map( a =>
-            <div> 
-              {a.activity_type} {a.title} {a.created_at} 
-            </div>
-            )
-        }
-      </div> */}
 
       
     </MainContainer>

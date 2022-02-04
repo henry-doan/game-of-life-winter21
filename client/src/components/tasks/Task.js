@@ -2,7 +2,7 @@ import {ActivityConsumer} from '../../providers/ActivityProvider';
 import {Link} from 'react-router-dom';
 import { TaskConsumer } from '../../providers/TaskProvider';
 import {AuthConsumer} from '../../providers/AuthProvider';
-import { TaskContent, TaskCompleteBtn, TaskWrapper, MainContainer } from '../../styles/shared';
+import { TaskContent, TaskCompleteBtn, TaskWrapper } from '../../styles/shared';
 
 const Task =({ user, id, title, complete, comment, diff_levels, tags, frequency, addActivity, updateTask, updatePoints }) =>{
 

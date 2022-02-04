@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <>
-      <footer class="page-footer grey darken-3">
+      <footer class="page-footer grey darken-3" style={{marginTop: '200px'}}>
       <div class="container">
         <div class="row">
           <div class="col l6 s12">

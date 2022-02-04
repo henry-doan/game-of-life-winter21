@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
     <HomeHeader>
-    <img alt="hero" src={hero} width="100%" />
+    <img alt="hero" src={hero} width="100%" style={{filter: 'brightness(50%)'}} />
       <ImageText>
         <h3>
           Level up by playing...
@@ -17,10 +17,7 @@ const Home = () => {
           When you win this game, we all win.
         </h5>
        </ImageText> 
-      
-    </HomeHeader>
-
-      <LoginContainer>
+       <LoginContainer>
         <p>
           Login Here
         </p>
@@ -29,6 +26,9 @@ const Home = () => {
         </h4>    
         <Login />
       </LoginContainer>
+    
+      
+    </HomeHeader>
     </>
   )
 }

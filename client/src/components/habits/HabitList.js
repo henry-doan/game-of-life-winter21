@@ -3,7 +3,7 @@ import Habit from './Habit';
 import { Button, Modal } from 'react-materialize';
 import HabitForm from './HabitForm';
 import { HabitConsumer } from '../../providers/HabitProvider';
-import { HabitContainer } from '../../styles/shared'
+import { HabitContainer, HabitModal, HabitModalBtn, } from '../../styles/shared'
 
 const HabitList = ({ habits, addHabit }) => {
   return(
@@ -13,7 +13,8 @@ const HabitList = ({ habits, addHabit }) => {
         { habits.map( h => 
          <Habit {...h} />
         )}
-        <Modal
+       </HabitContainer>
+        <HabitModal
           actions={[
             <Button flat modal="close" node="button" waves="green">Cancel</Button>
           ]}
@@ -34,11 +35,11 @@ const HabitList = ({ habits, addHabit }) => {
             preventScrolling: true,
             startingTop: '4%'
           }}
-          trigger={<Button node="button">+</Button>}
+          trigger={<HabitModalBtn node="button">+</HabitModalBtn>}
         >
           <HabitForm addHabit={addHabit} />
-        </Modal>
-        </HabitContainer>
+        </HabitModal>
+       
     </>
   )
 }
