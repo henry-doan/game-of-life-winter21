@@ -1,80 +1,67 @@
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, NavItem, Icon } from 'react-materialize';
+// import M from "materialize-css/dist/js/materialize.min.js";
+import Logo from '../../images/Logo.png';
+import { GameNav, GameNavImg, GameNavItemPrime, GameNavItemSecondary, NotificationIcon, NotificationItem, ImageItem, LinkImage } from "../../styles/shared";
 
-const MainNavbar = ({ user, handleLogout }) => {
+const MainNavbar = ({ user, handleLogout, image}) => {
+  const publicLinks = [
+    <GameNavItemSecondary key={1} to="/register">
+      Sign Up
+    </GameNavItemSecondary>,
+    <GameNavItemPrime to="/login" key={2}>
+      Log In
+    </GameNavItemPrime>
+  ];
 
-  const rightNavItems = () => {
-    if (user) {
-      return (
-        <>
-          <Nav.Link>
-            <Link to="/dashboard">
-              Dashboard
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/profile">
-              Profile
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/activities">
-              Activities
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/habits">
-              Habits
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/tasks">
-              Tasks
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/rewards">
-              Rewards
-            </Link>
-          </Nav.Link>
-          <Nav.Link onClick={() => handleLogout()}>
-            Logout
-          </Nav.Link>
-        </>
-      )
-    } else {
-      return (
-        <>
-          <Nav.Link>
-            <Link to="/login">
-              Login
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/register">
-              Register
-            </Link>
-          </Nav.Link>
-        </>
-      )
-    }
-  }
+  const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
+
+  const privateLinks = [
+    
+    <NotificationItem to="/activities">
+      <NotificationIcon>notifications_none</NotificationIcon>
+
+    </NotificationItem>
+    ,
+    <LinkImage to="/profile">
+        <ImageItem src={ user ? user.image : defaultImage} />
+    </LinkImage>
+    ,
+    // <NavItem key={7} onClick={() => handleLogout()}>
+    //   Logout
+    // </NavItem>
+  ];
 
   return (
     <>
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand>
-            <Link to="/">
-              Game of Life
-            </Link>
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            { rightNavItems() }
-          </Nav>
-        </Container>
-      </Navbar>
+      <GameNav
+        alignLinks="right"
+        brand={
+          <Link to={user ? "/dashboard" : "/"} className="brand-logo">
+            <GameNavImg 
+              src={Logo}
+              height="70px"
+            />
+          </Link>
+        }
+        
+        id="mobile-nav"
+        menuIcon={<Icon>menu</Icon>}
+        options={{
+          draggable: true,
+          edge: 'left',
+          inDuration: 250,
+          onCloseEnd: null,
+          onCloseStart: null,
+          onOpenEnd: null,
+          onOpenStart: null,
+          outDuration: 200,
+          preventScrolling: true
+        }}
+      >
+        { user ? privateLinks : publicLinks }
+      </GameNav>
     </>
   )
 }

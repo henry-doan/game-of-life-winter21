@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { InputSlot, BlackLabel, RewardButton } from '../../styles/shared';
+import ChecklistList from '../checklists/ChecklistList';
+import { Select } from 'react-materialize';
 
-const TaskForm = ({id, title, comment, add_sub, diff_levels, tags, frequency, complete, updateTask, addTask}) => {
+const TaskForm = ({id, taskId, title, setEdit, setAdd, comment, add_sub, diff_levels, tags, frequency, complete, updateTask, addTask, checklists}) => {
   const [task, setTask ] = useState({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily', complete: false})
 
 
@@ -14,8 +17,10 @@ const handleSubmit = (e) => {
   e.preventDefault()
   if (id) {
     updateTask(id, task)
+    setEdit(false)
   } else {
     addTask(task)
+    setAdd(false)
   }
   setTask({ title: '', comment: '', diff_levels: 'Easy', tags: '', frequency: 'Daily', complete: false})
 }
@@ -24,16 +29,16 @@ const handleSubmit = (e) => {
 return (
   <>
     <form onSubmit={handleSubmit}>
-      <label>Task:</label>
-      <input 
+      <BlackLabel>Task:</BlackLabel>
+      <InputSlot 
         type="text"
         name="title"
         value={task.title}
         onChange={(e) => setTask({ ...task, title: e.target.value})}
         required
       />
-      <label>Note:</label>
-      <input 
+      <BlackLabel>Note:</BlackLabel>
+      <InputSlot
         type="text"
         name="comment"
         value={task.comment}
@@ -41,35 +46,49 @@ return (
         required
       />
 
-      {/* <fieldset>
-      <input
-        type="radio"
-        id="positive"
-        name="add_sub"
-        value={task.add_sub}
-        onChange={(e) => setTask({ ...task, add_sub: e.target.value})}
-     />
-    <label for="positive">+</label>
-     <input
-        type="radio"
-        id="negative"
-        name="add_sub"
-        value={task.add_sub}
-        onChange={(e) => setTask({ ...task, add_sub: e.target.value})}
-     />
-    <label for="negative">-</label>
-    </fieldset> */}
+      <BlackLabel>Difficulty</BlackLabel>
+      <Select
+        id="diff_levels"
+        multiple={false}
+        onChange={(e) => setTask({ ...task, diff_levels: e.target.value})}
+        options={{
+          classes: '',
+          dropdownOptions: {
+            alignment: 'left',
+            autoTrigger: true,
+            closeOnClick: true,
+            constrainWidth: true,
+            coverTrigger: true,
+            hover: false,
+            inDuration: 150,
+            onCloseEnd: null,
+            onCloseStart: null,
+            onOpenEnd: null,
+            onOpenStart: null,
+            outDuration: 250
+          }
+        }}
+        value=""
+      >
+        <option
+          disabled
+          value=""
+        >
+          Choose your option
+        </option>
+        <option value="Easy">
+          Easy
+        </option>
+        <option value="Medium">
+          Medium
+        </option>
+        <option value="Difficult">
+          Difficult
+        </option>
+      </Select>
 
-
-      <label>Difficulty</label>
-      <select id="diff_levels" name="diff_levels" onChange={(e) => setTask({ ...task, diff_levels: e.target.value})}> 
-        <option value='Easy' selected>Easy</option>
-        <option value='Medium'>Medium</option>
-        <option value='Difficult'>Difficult</option>
-      </select>
-
-      <label>Tags</label>
-      <input
+      <BlackLabel>Tags</BlackLabel>
+      <InputSlot
         type="text"
         id="tags"
         name="tags"
@@ -77,14 +96,53 @@ return (
         onChange={(e) => setTask({ ...task, tags: e.target.value})}
         />
 
-      <label>Reset Counter</label>
-      <select id="frequency" name="frequency"> 
-        <option value='Daily' selected>Daily</option>
-        <option value='Weekly'>Weekly</option>
-        <option value='Monthly'>Monthly</option>
-        <option value='Annually'>Annually</option>
-      </select> 
-      <button type="submit">Submit</button>
+      <BlackLabel>Reset Counter</BlackLabel>
+    
+      <Select
+        id="frequency"
+        multiple={false}
+        onChange={(e) => setTask({ ...task, frequency: e.target.value})}
+        options={{
+          classes: '',
+          dropdownOptions: {
+            alignment: 'left',
+            autoTrigger: true,
+            closeOnClick: true,
+            constrainWidth: true,
+            coverTrigger: true,
+            hover: false,
+            inDuration: 150,
+            onCloseEnd: null,
+            onCloseStart: null,
+            onOpenEnd: null,
+            onOpenStart: null,
+            outDuration: 250
+          }
+        }}
+        value=""
+      >
+        <option
+          disabled
+          value=""
+        >
+          Choose your option
+        </option>
+        <option value="Daily">
+          Daily
+        </option>
+        <option value="Weekly">
+          Weekly
+        </option>
+        <option value="Monthly">
+          Monthly
+        </option>
+        <option value="Annually">
+          Annually
+        </option>
+      </Select>
+
+
+      <RewardButton type="submit">Submit</RewardButton>
 
     </form>
 

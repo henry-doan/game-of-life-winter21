@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { AuthConsumer } from '../../providers/AuthProvider';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { EditButton } from '../../styles/shared';
+// import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Register = ({ handleRegister }) => {
-  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', fname: '', lname: '', age: 0, image: '' })
+  const [user, setUser] = useState({ email: '', password: '', passwordConfirmation: '', name: '', image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png', note: '' })
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (user.password === user.passwordConfirmation) {
       handleRegister(user)
-      setUser({ email: '', password: '', passwordConfirmation: '', fname: '', lname: '', age: 0, image: '' })
+      setUser({ email: '', password: '', passwordConfirmation: '', name: '', image: '', note: '' })
     } else {
       alert('Password do not match')
     }
@@ -17,13 +18,11 @@ const Register = ({ handleRegister }) => {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Container>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control 
+      <form onSubmit={handleSubmit}>
+        
+              <div>
+                <label>Email address</label>
+                <input 
                   type="email"
                   autoFocus
                   name="email"
@@ -31,92 +30,67 @@ const Register = ({ handleRegister }) => {
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control 
+              </div>
+          
+              <div>
+                <label>Name</label>
+                <input
                   type="text"
-                  name="fname"
-                  value={user.fname}
-                  onChange={(e) => setUser({ ...user, fname: e.target.value })}
+                  name="name"
+                  value={user.name}
+                  onChange={(e) => setUser({ ...user, name: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control 
-                  type="text"
-                  name="lname"
-                  value={user.lname}
-                  onChange={(e) => setUser({ ...user, lname: e.target.value })}
-                  required
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Age</Form.Label>
-                <Form.Control 
-                  type="number"
-                  name="age"
-                  value={user.age}
-                  onChange={(e) => setUser({ ...user, age: e.target.value })}
-                  required
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3">
-                <Form.Label>Profile Image</Form.Label>
-                <Form.Control 
+              </div>
+           
+              <div>
+                <label>Profile Image</label>
+                <input
                   type="text"
                   name="image"
                   value={user.image}
                   onChange={(e) => setUser({ ...user, image: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control 
+              </div>
+
+              <div>
+                <label>Description</label>
+                <input
+                  type="text"
+                  name="note"
+                  value={user.note}
+                  onChange={(e) => setUser({ ...user, note: e.target.value })}
+                  
+                />
+              </div>
+            
+              <div>
+                <label>Password</label>
+                <input
                   type="password"
                   name="password"
                   value={user.password}
                   onChange={(e) => setUser({ ...user, password: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password Confirmation</Form.Label>
-                <Form.Control 
+              </div>
+            
+              <div>
+                <label>Password Confirmation</label>
+                <input
                   type="password"
                   name="passwordConfirmation"
                   value={user.passwordConfirmation}
                   onChange={(e) => setUser({ ...user, passwordConfirmation: e.target.value })}
                   required
                 />
-              </Form.Group>
-            </Col>
-          </Row>
-        </Container>
-        <Button variant="primary" type="submit">
-          Register
-        </Button>
-      </Form>
+              </div>
+           
+              <EditButton>
+                Register
+              </EditButton>
+            </form>
     </>
   )
 }

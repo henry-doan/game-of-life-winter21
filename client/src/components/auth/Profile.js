@@ -2,103 +2,136 @@
 import { AuthConsumer } from '../../providers/AuthProvider';
 // import Moment from 'react-moment';
 import { useEffect, useState } from 'react';
-import { Form, Row, Col, Image, Container, Button } from 'react-bootstrap';
+import { Row, Col, Card, Icon, CardTitle, Button } from 'react-materialize';
+import { useParams } from 'react-router';
+import { MainContainer, EditButton } from '../../styles/shared';
 
 
-const Profile = ({ user, updateUser }) => {
+const Profile = ({ name, email, image, password, id, note, updateUser }) => {
   const [editing, setEditing] = useState(false)
-  const [formVals, setFormValue] = useState({ name: '', email: '', image: '' })
+  const [user, setUser] = useState({ name: '', image: '', email: '', note: '', })
 
   useEffect( () => {
-    const { name, email, image } = user
-    setFormValue({ name, email, image })
+    setUser({ name, email, image, note })
   }, [])
 
 const profileView = () => {
   const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
-
   return (
     <>
-      <Col md="4">
-        <Image src={formVals.image || defaultImage } />
-      </Col>
-      <Col md="8">
-        <h1>{formVals.name}</h1>
-        <h1>{formVals.email}</h1>
-      </Col>
+      <Row>
+        <Col
+          m={6}
+          s={12}
+        >
+      <Card
+        closeIcon={<Icon>close</Icon>}
+        header={<CardTitle image={user ? user.image : defaultImage} reveal waves="light" style={{height: "400px", objectPosition: "center"}}/>}
+        reveal={
+          <>
+        <h5 style={{color: "blue"}}>"{note}"</h5>
+        <br />
+        <h5>User Info:</h5>
+        <p>Email: {email}</p>
+        </>
+        }
+        
+        revealIcon={<Icon>more_vert</Icon>}
+        title={name}
+      >
+      <p>
+                <a href="/activities">
+                  Activities Completed
+                </a>
+              </p>
+            </Card>
+          </Col>
+        </Row>
     </>
+   
   )
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateUser(user, formVals)
+    updateUser(id, user)
     setEditing(false)
   }
 
   const editView = () => {
     return(
-      <Form onSubmit={handleSubmit}>
-        <Col md="4">
-        <Form.Group>
-            <Form.Label>Image</Form.Label>
-            <Form.Control 
+      
+      <form onSubmit={handleSubmit}>
+        
+        <div>
+            <label>Image</label>
+            <input 
               type="text" 
               name="image"
-              value={formVals.image}
+              value={user.image}
               required
-              onChange={(e) => setFormValue({...formVals, image: e.target.value })}
+              onChange={(e) => setUser({...user, image: e.target.value })}
             />
-          </Form.Group>
-        </Col>
-        <Col md="8">
-          <Form.Group>
-            <Form.Label>Name</Form.Label>
-            <Form.Control 
+          </div>
+
+
+          <div>
+            <label>Name</label>
+            <input 
               type="text" 
               name="name"
-              value={formVals.name}
+              value={user.name}
               required
-              onChange={(e) => setFormValue({...formVals, name: e.target.value })}
+              onChange={(e) => setUser({...user, name: e.target.value })}
             />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control 
+          </div>
+
+          <div>
+            <label>Description</label>
+            <input 
+              type="text" 
+              name="note"
+              value={user.note}
+              onChange={(e) => setUser({...user, note: e.target.value })}
+            />
+          </div>
+
+          <div>
+            <label>Email</label>
+            <input 
               type="email" 
               name="email"
-              value={formVals.email}
+              value={user.email}
               required
-              onChange={(e) => setFormValue({...formVals, email: e.target.value })}
+              onChange={(e) => setUser({...user, email: e.target.value })}
             />
-          </Form.Group>
-          <Button type="submit">Update</Button>
-        </Col>
-      </Form>
+          </div>
+          <EditButton type="submit">Update</EditButton>
+      </form>
+      
     )
     }
   
   return (
-    <>
-    <Container>
+    <MainContainer>
+    <div>
         <h1>Profile</h1>
-        <hr />
-        <Row>
+        <br />
+        
           { editing ? editView() : profileView() }
-          <Col>
-            <Button onClick={() => setEditing(!editing)}>
+          
+            <EditButton onClick={() => setEditing(!editing)}>
               { editing ? 'cancel' : 'edit' }
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-      </>
+            </EditButton>
+          
+      </div>
+      </MainContainer>
   )
 }
 
 const ConnectedProfile = (props) => (
   <AuthConsumer>
-    { value => <Profile {...props} {...value} />}
+    { value => <Profile {...props} {...value.user} updateUser={value.updateUser} />}
   </AuthConsumer>
 )
 

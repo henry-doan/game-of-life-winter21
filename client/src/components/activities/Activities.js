@@ -1,9 +1,9 @@
-// import HabitShow from '../habits/HabitShow';
-// import TaskShow from '../tasks/TaskShow';
-// import RewardShow from '../rewards/RewardShow';
+
 import { useState, useEffect } from 'react';
 import {ActivityConsumer} from '../../providers/ActivityProvider';
-import {ListGroup} from 'react-bootstrap';
+import { MainContainer } from '../../styles/shared';
+import {Table} from 'react-materialize';
+import Moment from 'react-moment';
 
 const Activities = ({ activities, created_at, id, getAllActivities }) => {
   const [adding, setAdding] = useState(false)
@@ -13,21 +13,48 @@ const Activities = ({ activities, created_at, id, getAllActivities }) => {
   }, [])
 
 
+
   return (
-    <>
+    <MainContainer>
       <h1>All Activities Completed:</h1>
-      <ListGroup>
+      <Table>
+        <thead>
+          <tr>
+            <th data-field="activity_type">
+              Activity Type 
+            </th>
+            <th data-field="title">
+              Description
+            </th>
+            <th data-field="created_at">
+              Completed At
+            </th>
+          </tr>
+        </thead>
+        
         {
           activities.map( a =>
-            <ListGroup.Item> 
-              {a.activity_type} {a.title} {a.created_at} 
-            </ListGroup.Item>
+            <tbody>
+              <tr>
+              <td> 
+              {a.activity_type}
+              </td>
+              <td>
+                {a.title}
+                </td>
+              <td>
+              <Moment format='MMMM Do YYYY, h:mm a'>
+              {a.created_at} 
+              </Moment>
+              </td>
+            </tr>
+            </tbody>
             )
         }
-      </ListGroup>
+       </Table>
 
       
-    </>
+    </MainContainer>
 
   )
 }

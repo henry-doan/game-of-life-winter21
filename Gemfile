@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'rack-cors'
 
 gem 'devise_token_auth'
+# gem 'materialize-sass'
 
 group :development, :test do
   gem 'pry'

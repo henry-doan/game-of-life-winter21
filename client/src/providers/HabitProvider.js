@@ -42,7 +42,7 @@ const HabitProvider = ({ children }) => {
       .then( res => {
         setHabits(habits.filter( r => r.id !== id))
         alert(res.data.message)
-        navigate('/habits')
+        navigate('/dashboard')
       })
       .catch( err => console.log(err))
   }

@@ -1,14 +1,101 @@
-import { useState, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
+// import { useState, useEffect } from 'react';
+// import { RewardFormStyle, RewardLabel, InputSlot, RewardFormChild, RewardCoinImg, RewardButton } from '../../styles/shared';
+// import { StyledComponent } from 'styled-components';
+// import GoldCoin from '../../images/GoldCoin.png';
+// import { useNavigate } from 'react-router-dom';
 
-const RewardForm = ({ addReward, id, award, points, updateReward }) => {
-  const [reward, setReward] = useState({ award: '', points: 0 })
+// const RewardForm = ({ addReward, id, award, points, notes, tags, updateReward }) => {
+//   const [reward, setReward] = useState({ award: '', points: 0, notes: '', tags: '' })
+
+//   useEffect(() => {
+//     if (id) {
+//       setReward({ award, points, notes, tags })
+//     }
+//   }, [])
+
+//   const navigate = useNavigate()
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault()
+//     if (id) {
+//       updateReward(id, reward)
+//     } else {
+//       addReward(reward)
+//     }
+//     setReward(({ award: '', points: 0, notes: '', tags: '' }))
+//     navigate('/dashboard')
+//   }
+
+//   return (
+//     <>
+//       <RewardFormStyle onSubmit={handleSubmit}>
+        
+//           <RewardLabel>Title*</RewardLabel>
+//           <InputSlot
+//             type="text"
+//             name="award"
+//             value={reward.award}
+//             onChange={(e) => setReward({ ...reward, award: e.target.value })}
+//           />
+        
+        
+//           <RewardLabel>Notes</RewardLabel>
+//           <InputSlot
+//             type="text"
+//             name="notes"
+//             value={reward.notes}
+//             onChange={(e) => setReward({ ...reward, notes: e.target.value })}
+//           />
+        
+       
+//           <RewardLabel>Tags</RewardLabel>
+//           <InputSlot
+//             type="string"
+//             name="tags"
+//             value={reward.tags}
+//             onChange={(e) => setReward({ ...reward, tags: e.target.value })}
+//           />
+        
+//         <br />
+//         <br />
+//           <RewardLabel>Points</RewardLabel>
+//           <RewardCoinImg src={GoldCoin} /><InputSlot
+//             type="text"
+//             name="points"
+//             value={reward.points}
+//             onChange={(e) => setReward({ ...reward, points: e.target.value })}
+            
+//           />
+   
+//         <RewardButton type="submit">
+//           Save
+//         </RewardButton>
+        
+//       </RewardFormStyle>
+//       <br />
+//     </>
+//   )
+// }
+
+
+// export default RewardForm;
+
+import { useState, useEffect } from 'react';
+import { RewardFormStyle, RewardLabel, InputSlot, RewardFormChild, RewardCoinImg, RewardButton } from '../../styles/shared';
+import { StyledComponent } from 'styled-components';
+import GoldCoin from '../../images/GoldCoin.png';
+import { useNavigate } from 'react-router-dom';
+
+const RewardForm = ({ addReward, id, award, points, notes, tags, updateReward }) => {
+  const [reward, setReward] = useState({ award: '', points: 0, notes: '', tags: '' })
 
   useEffect(() => {
     if (id) {
-      setReward({ award, points })
+      setReward({ award, points, notes, tags })
     }
   }, [])
+
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -17,55 +104,60 @@ const RewardForm = ({ addReward, id, award, points, updateReward }) => {
     } else {
       addReward(reward)
     }
-    setReward(({ award: '', points: 0 }))
+    setReward(({ award: '', points: 0, notes: '', tags: '' }))
+    navigate('/dashboard')
   }
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" >
-          <Form.Label>Award Name</Form.Label>
-          <Form.Control
+      <RewardFormStyle onSubmit={handleSubmit}>
+        
+          <RewardLabel>Title*</RewardLabel>
+          <InputSlot
             type="text"
             name="award"
             value={reward.award}
             onChange={(e) => setReward({ ...reward, award: e.target.value })}
           />
-        </Form.Group>
-        <Form.Group className="mb-3" >
-          <Form.Label>Notes</Form.Label>
-          <Form.Control
+        
+        
+          <RewardLabel>Notes</RewardLabel>
+          <InputSlot
             type="text"
             name="notes"
             value={reward.notes}
             onChange={(e) => setReward({ ...reward, notes: e.target.value })}
           />
-        </Form.Group>
-        <Form.Group className="mb-3" >
-          <Form.Label>Tags</Form.Label>
-          <Form.Control
+        
+       
+          <RewardLabel>Tags</RewardLabel>
+          <InputSlot
             type="string"
             name="tags"
             value={reward.tags}
             onChange={(e) => setReward({ ...reward, tags: e.target.value })}
           />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Points</Form.Label>
-          <Form.Control
+        
+        <br />
+        <br />
+          <RewardLabel>Points</RewardLabel>
+          <RewardCoinImg src={GoldCoin} /><InputSlot
             type="text"
             name="points"
             value={reward.points}
             onChange={(e) => setReward({ ...reward, points: e.target.value })}
+            
           />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+   
+        <RewardButton type="submit">
+          Save
+        </RewardButton>
+        
+      </RewardFormStyle>
       <br />
     </>
   )
 }
+
 
 export default RewardForm;
